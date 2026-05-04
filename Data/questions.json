@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What is REST API?",
+    "answer": "REST is an architectural style using HTTP methods like GET, POST, PUT, DELETE."
+  },
+  {
+    "question": "What is normalization in DBMS?",
+    "answer": "Normalization reduces redundancy in database tables."
+  },
+  {
+    "question": "What is a primary key?",
+    "answer": "A primary key uniquely identifies each record in a table."
+  }
+]
