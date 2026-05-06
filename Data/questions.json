@@ -1,42 +1,92 @@
-[
-  {
-    "question": "What is Java?",
-    "answer": "Java is a high-level, object-oriented, platform-independent programming language."
-  },
-  {
-    "question": "What is JVM?",
-    "answer": "JVM is the Java Virtual Machine that executes Java bytecode and enables platform independence."
-  },
-  {
-    "question": "What is JDK?",
-    "answer": "JDK is the Java Development Kit that includes the compiler, JVM, and standard libraries."
-  },
-  {
-    "question": "What is JRE?",
-    "answer": "JRE is the Java Runtime Environment that provides libraries and JVM to run Java programs."
-  },
-  {
-    "question": "What are the 4 pillars of OOP?",
-    "answer": "Encapsulation, Abstraction, Inheritance, and Polymorphism."
-  },
-  {
-    "question": "What is encapsulation?",
-    "answer": "Encapsulation is wrapping data and methods into a single unit and restricting direct access."
-  },
-  {
-    "question": "What is inheritance?",
-    "answer": "Inheritance allows one class to acquire the properties and behavior of another class."
-  },
-  {
-    "question": "What is polymorphism?",
-    "answer": "Polymorphism allows methods to have different implementations based on the object."
-  },
-  {
-    "question": "What is method overloading?",
-    "answer": "Method overloading is defining multiple methods with the same name but different parameters."
-  },
-  {
-    "question": "What is method overriding?",
-    "answer": "Method overriding is redefining a parent class method in a child class with the same signature."
-  }
-]
+{
+  "API": [
+    {
+      "question": "What is an API?",
+      "answer": "An API (Application Programming Interface) allows different software systems to communicate by sending requests and receiving responses."
+    },
+    {
+      "question": "What is REST?",
+      "answer": "REST is an architectural style for designing APIs using HTTP methods and stateless communication."
+    },
+    {
+      "question": "What are HTTP methods?",
+      "answer": "GET (read), POST (create), PUT (update/replace), PATCH (partial update), DELETE (remove)."
+    },
+    {
+      "question": "Difference between PUT and PATCH?",
+      "answer": "PUT updates the entire resource, while PATCH updates only specific fields."
+    },
+    {
+      "question": "What are status codes?",
+      "answer": "HTTP response codes indicating request result, e.g., 200 (success), 201 (created), 400 (bad request), 404 (not found), 500 (server error)."
+    },
+    {
+      "question": "What is idempotency?",
+      "answer": "An operation that produces the same result even if executed multiple times, like GET or PUT."
+    },
+    {
+      "question": "What is JWT?",
+      "answer": "JSON Web Token is used for secure authentication by passing encoded user information between client and server."
+    }
+  ],
+  "DBMS": [
+    {
+      "question": "What is DBMS?",
+      "answer": "DBMS is software used to store, manage, and retrieve data efficiently."
+    },
+    {
+      "question": "Difference between DBMS and RDBMS?",
+      "answer": "RDBMS stores data in tables with relationships, while DBMS may not enforce relationships."
+    },
+    {
+      "question": "What is a primary key?",
+      "answer": "A unique identifier for each record in a table."
+    },
+    {
+      "question": "What is a foreign key?",
+      "answer": "A field that links one table to another by referencing a primary key."
+    },
+    {
+      "question": "What is normalization?",
+      "answer": "Process of organizing data to reduce redundancy and improve integrity."
+    },
+    {
+      "question": "What is indexing?",
+      "answer": "A technique to improve query performance by creating a data structure for fast lookup."
+    },
+    {
+      "question": "What is ACID?",
+      "answer": "Properties ensuring reliable transactions: Atomicity, Consistency, Isolation, Durability."
+    }
+  ],
+  "SystemDesign": [
+    {
+      "question": "What is system design?",
+      "answer": "Process of designing architecture, components, and data flow of a system."
+    },
+    {
+      "question": "What is scalability?",
+      "answer": "Ability of a system to handle increasing load by adding resources."
+    },
+    {
+      "question": "What is load balancing?",
+      "answer": "Distributing traffic across multiple servers to improve performance and reliability."
+    },
+    {
+      "question": "What is caching?",
+      "answer": "Storing frequently accessed data temporarily to reduce load and improve speed."
+    },
+    {
+      "question": "Explain client-server architecture.",
+      "answer": "Client sends requests, server processes them and returns responses."
+    },
+    {
+      "question": "How does your project work?",
+      "answer": "Frontend calls FastAPI backend, backend fetches random question from JSON and returns it to UI."
+    },
+    {
+      "question": "How would you scale your project?",
+      "answer": "By adding load balancers, using databases instead of JSON, and deploying multiple backend instances."
+    }
+  ]
+}
