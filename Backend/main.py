@@ -1,10 +1,13 @@
 from fastapi import FastAPI
 import random
 import json
+import os
 
 app = FastAPI()
 
-with open("../data/questions.json") as f:
+file_path = os.path.join(os.path.dirname(__file__), "..", "data", "questions.json")
+
+with open(file_path, "r", encoding="utf-8") as f:
     questions = json.load(f)
 
 
@@ -12,11 +15,14 @@ with open("../data/questions.json") as f:
 def home():
     return {"message": "API running"}
 
-
 @app.get("/get-question")
 def get_question():
-    return random.choice(questions)
+    all_questions = []
 
+    for category in questions.values():
+        all_questions.extend(category)
+
+    return random.choice(all_questions)
 
 def evaluate_answer(user_answer, correct_answer):
     user_words = set(user_answer.lower().split())
@@ -47,5 +53,5 @@ def submit_answer(data: dict):
 
     return {
         "score": score,
-        "feedback": feedback
+        "feedback": feedback 
     }
