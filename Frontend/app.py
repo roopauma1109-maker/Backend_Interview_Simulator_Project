@@ -1,34 +1,25 @@
 import streamlit as st
 import requests
 
-st.title("Backend Interview Simulator")
+st.title("AI Interview Assistant")
 
-if "question" not in st.session_state:
-    st.session_state.question = ""
-    st.session_state.correct_answer = ""
+query = st.text_input("Ask Interview Question")
 
-# Get question
-if st.button("Get Question"):
-    res = requests.get("http://127.0.0.1:8000/get-question")
-    data = res.json()
-    st.session_state.question = data["question"]
-    st.session_state.correct_answer = data["answer"]
+if st.button("Submit"):
 
-# Display question
-if st.session_state.question:
-    st.write("Question:", st.session_state.question)
+    response = requests.get(
+        "http://127.0.0.1:8000/ask",
+        params={"query": query}
+    )
 
-    user_answer = st.text_area("Your Answer")
+    data = response.json()
 
-    if st.button("Submit Answer"):
-        res = requests.post(
-            "http://127.0.0.1:8000/submit-answer",
-            json={
-                "user_answer": user_answer,
-                "correct_answer": st.session_state.correct_answer
-            }
-        )
+    st.subheader("Answer")
 
-        result = res.json()
-        st.write("Score:", result["score"])
-        st.write("Feedback:", result["feedback"])
+    st.write(data["answer"])
+
+    st.subheader("Citations")
+
+    for citation in data["citations"]:
+
+        st.write(citation)
