@@ -1,82 +1,123 @@
-# Backend Interview Simulator
+# 📘 Backend Interview Simulator – Week 2
 
-## Overview
+## 📌 Overview
 
-A simple full-stack application that simulates backend interview practice by serving random questions through an API and displaying them in a UI.
+The Backend Interview Simulator is a full-stack application designed to help users practice backend interview questions through a simple API-driven system.
 
-## Tech Stack
+In Week 2, the focus is on improving backend structure, introducing API-based question retrieval using FastAPI, and integrating a frontend interface using Streamlit for real-time interaction.
 
-* **Backend:** FastAPI (Python)
-* **Frontend:** Streamlit
-* **Data:** JSON (`questions.json`)
-* **API Docs:** Swagger (auto-generated)
+---
 
-## Features
+## 🏗️ System Architecture
 
-* Random interview question generation via API
-* JSON-based question storage
-* Lightweight Streamlit UI
-* Simple REST endpoint: `GET /get-question`
+JSON File → FastAPI Backend → REST API (/get-question) → Streamlit Frontend → User Interface
 
-## How It Works
+- Questions are stored in a structured JSON file  
+- FastAPI serves questions via REST API  
+- Streamlit acts as the client UI  
+- Frontend fetches data dynamically from backend  
 
-1. Questions are stored in a JSON file
-2. FastAPI backend loads the data
-3. `/get-question` returns a random question
-4. Streamlit frontend calls the API
-5. Question is displayed to the user
+---
 
-## Run Locally
+## ⚙️ Tech Stack
 
-### 1. Start Backend
+- Backend: FastAPI (Python)  
+- Frontend: Streamlit  
+- Data Storage: JSON (questions.json)  
+- API Testing: Swagger UI (/docs)  
+- Communication: REST API  
 
-```
-cd Backend
-uvicorn main:app --reload
-```
+---
 
-### 2. Start Frontend
+## 🚀 Features (Week 2 Enhancements)
 
-```
-cd Frontend
-streamlit run app.py
-```
+- Random interview question generation via API  
+- Clean RESTful endpoint design  
+- JSON-based data management  
+- Frontend-backend integration  
+- Interactive UI using Streamlit  
+- Auto-generated API documentation (Swagger UI)  
 
-### 3. Open
+---
 
-* API: [http://127.0.0.1:8000](http://127.0.0.1:8000)
-* Docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-* UI: [http://localhost:8501](http://localhost:8501)
+## 🔄 How It Works
 
-## API Endpoint
+1. Interview questions are stored in questions.json  
+2. FastAPI loads and processes the data  
+3. API endpoint /get-question returns a random question  
+4. Streamlit frontend sends request to backend API  
+5. Response is displayed in UI in real-time  
 
-```
+---
+
+## 📡 API Endpoint
+
 GET /get-question
-```
 
 ### Sample Response
 
-```json
 {
   "question": "What is API?",
-  "answer": "An API allows communication between systems."
+  "answer": "An API allows communication between different software systems."
 }
-```
 
-## Learning Outcomes
+---
 
-* Built REST APIs using FastAPI
-* Connected frontend with backend
-* Worked with JSON data storage
-* Understood client-server interaction
+## ▶️ How to Run Locally
 
-## Future Improvements
+### 1. Start Backend
 
-* Add answer evaluation
-* Add categories/difficulty levels
-* Replace JSON with database
-* Improve UI/UX
+cd Backend  
+uvicorn main:app --reload  
 
-## Author
+### 2. Start Frontend
+
+cd Frontend  
+streamlit run app.py  
+
+---
+
+## 🌐 Access Links
+
+- Backend API: http://127.0.0.1:8000  
+- Swagger Docs: http://127.0.0.1:8000/docs  
+- Frontend UI: http://localhost:8501  
+
+---
+
+## 🧠 Key Learnings (Week 2)
+
+- Building REST APIs using FastAPI  
+- JSON-based data handling  
+- API request/response flow  
+- Frontend-backend integration  
+- Client-server architecture  
+- Real-time data fetching using HTTP  
+
+---
+
+## 📈 Week 1 vs Week 2 Improvements
+
+Week 1: Basic backend setup  
+Week 2: API-driven system with frontend integration  
+
+- Static execution → Dynamic API system  
+- No UI → Streamlit UI added  
+- Local logic → Client-server communication  
+
+---
+
+## 🔮 Future Improvements (Week 3)
+
+- Answer evaluation system  
+- Category-based questions (DBMS, OS, CN)  
+- Difficulty levels (Easy / Medium / Hard)  
+- Database integration instead of JSON  
+- Score tracking system  
+- User session history  
+
+---
+
+## 👨‍💻 Author
 
 Roopa
