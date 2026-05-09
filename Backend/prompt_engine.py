@@ -1,27 +1,35 @@
-def build_prompt(question, retrieved_docs):
+def generate_feedback(answer):
 
-    context = ""
+    answer = answer.strip()
 
-    for doc in retrieved_docs:
+    # Empty answer check
+    if not answer:
+        return "Please provide an answer."
 
-        context += f"""
-Question: {doc['question']}
-Answer: {doc['answer']}
+    # Short answer check
+    if len(answer) < 20:
+        return """
+Your answer is too short.
 
+Suggestions:
+- Explain the concept clearly
+- Add technical details
+- Include examples if possible
 """
 
-    prompt = f"""
-You are an AI Interview Assistant.
+    # Good answer feedback
+    return f"""
+Good attempt.
 
-Use the context below to answer professionally.
+Your answer:
+{answer}
 
-Context:
-{context}
+Suggestions for improvement:
+- Add more technical explanation
+- Include real-world examples
+- Mention advantages and disadvantages
+- Explain important concepts in detail
 
-User Question:
-{question}
-
-Answer:
+Overall:
+Your answer shows basic understanding of the topic.
 """
-
-    return prompt
