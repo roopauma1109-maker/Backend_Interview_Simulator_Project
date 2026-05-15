@@ -4,11 +4,18 @@ from datetime import datetime
 import json
 import os
 
-# ---------------- PAGE CONFIG ---------------- #
+# ==================================================
+# PAGE CONFIG
+# ==================================================
 
-st.set_page_config(page_title="Backend Interview Simulator")
+st.set_page_config(
+    page_title="Backend Interview Simulator",
+    layout="centered"
+)
 
-# ---------------- LOGIN SYSTEM ---------------- #
+# ==================================================
+# LOGIN SYSTEM
+# ==================================================
 
 USERNAME = "admin"
 PASSWORD = "1234"
@@ -36,18 +43,46 @@ if not st.session_state.logged_in:
 
     st.stop()
 
-# ---------------- MAIN APP ---------------- #
+# ==================================================
+# MAIN APP
+# ==================================================
 
 st.title("Backend Interview Simulator")
 
-# Backend URL
+# ==================================================
+# BACKEND URL
+# ==================================================
+
 API_URL = "http://127.0.0.1:8000"
 
-# Session state
+# ==================================================
+# CHECK BACKEND CONNECTION
+# ==================================================
+
+try:
+
+    response = requests.get(API_URL, timeout=5)
+
+    if response.status_code != 200:
+
+        st.error("Backend server is not responding.")
+        st.stop()
+
+except Exception:
+
+    st.error("Backend server is not running.")
+    st.stop()
+
+# ==================================================
+# SESSION STATE
+# ==================================================
+
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# ---------------- GET QUESTION ---------------- #
+# ==================================================
+# GET QUESTION
+# ==================================================
 
 if st.button("Get Question"):
 
@@ -56,14 +91,18 @@ if st.button("Get Question"):
         try:
 
             response = requests.get(
-                f"{API_URL}/get-question"
+                f"{API_URL}/get-question",
+                timeout=10
             )
 
             if response.status_code == 200:
 
                 data = response.json()
 
-                question = data["question"]
+                question = data.get(
+                    "question",
+                    "No question found"
+                )
 
                 st.session_state.messages.append(
                     {
@@ -72,13 +111,19 @@ if st.button("Get Question"):
                     }
                 )
 
+                st.rerun()
+
             else:
+
                 st.error("Failed to get question.")
 
-        except:
-            st.error("Backend server is not running.")
+        except Exception as e:
 
-# ---------------- AI ASSISTANT ---------------- #
+            st.error(f"Error: {e}")
+
+# ==================================================
+# AI ASSISTANT
+# ==================================================
 
 st.subheader("AI Assistant")
 
@@ -89,6 +134,7 @@ query = st.text_input(
 if st.button("Ask AI"):
 
     if query.strip() == "":
+
         st.warning("Please enter a question.")
 
     else:
@@ -97,7 +143,8 @@ if st.button("Ask AI"):
 
             response = requests.get(
                 f"{API_URL}/ask",
-                params={"query": query}
+                params={"query": query},
+                timeout=10
             )
 
             if response.status_code == 200:
@@ -105,18 +152,40 @@ if st.button("Ask AI"):
                 data = response.json()
 
                 st.write("### AI Answer")
-                st.success(data["answer"])
+
+                st.success(
+                    data.get(
+                        "answer",
+                        "No answer found."
+                    )
+                )
 
                 st.write("### Citations")
-                st.write(data["citations"])
+
+                citations = data.get(
+                    "citations",
+                    []
+                )
+
+                if citations:
+
+                    st.write(citations)
+
+                else:
+
+                    st.info("No citations available.")
 
             else:
+
                 st.error("Failed to get AI response.")
 
-        except:
-            st.error("Backend server is not running.")
+        except Exception as e:
 
-# ---------------- CHAT DISPLAY ---------------- #
+            st.error(f"Error: {e}")
+
+# ==================================================
+# CHAT DISPLAY
+# ==================================================
 
 for msg in st.session_state.messages:
 
@@ -124,7 +193,9 @@ for msg in st.session_state.messages:
 
         st.write(msg["content"])
 
-# ---------------- USER ANSWER ---------------- #
+# ==================================================
+# USER ANSWER
+# ==================================================
 
 user_answer = st.chat_input(
     "Enter your answer"
@@ -132,7 +203,6 @@ user_answer = st.chat_input(
 
 if user_answer:
 
-    # Store user message
     st.session_state.messages.append(
         {
             "role": "user",
@@ -150,14 +220,17 @@ if user_answer:
 
             response = requests.post(
                 f"{API_URL}/evaluate-answer",
-                json=payload
+                json=payload,
+                timeout=10
             )
 
             if response.status_code == 200:
 
-                feedback = response.json()["feedback"]
+                feedback = response.json().get(
+                    "feedback",
+                    "No feedback received."
+                )
 
-                # Store assistant feedback
                 st.session_state.messages.append(
                     {
                         "role": "assistant",
@@ -165,7 +238,7 @@ if user_answer:
                     }
                 )
 
-                # ---------------- SAVE LOGS ---------------- #
+                # SAVE CHAT LOGS
 
                 log_data = {
                     "answer": user_answer,
@@ -173,28 +246,36 @@ if user_answer:
                     "time": str(datetime.now())
                 }
 
-                if not os.path.exists("chat_logs.json"):
+                log_file = "chat_logs.json"
 
-                    with open("chat_logs.json", "w") as f:
+                if not os.path.exists(log_file):
+
+                    with open(log_file, "w") as f:
                         json.dump([], f)
 
-                with open("chat_logs.json", "r") as f:
+                with open(log_file, "r") as f:
+
                     logs = json.load(f)
 
                 logs.append(log_data)
 
-                with open("chat_logs.json", "w") as f:
+                with open(log_file, "w") as f:
+
                     json.dump(logs, f, indent=4)
 
             else:
+
                 st.error("Failed to evaluate answer.")
 
-        except:
-            st.error("Backend server is not running.")
+        except Exception as e:
+
+            st.error(f"Error: {e}")
 
     st.rerun()
 
-# ---------------- CLEAR CHAT ---------------- #
+# ==================================================
+# CLEAR CHAT
+# ==================================================
 
 if st.button("Clear Chat"):
 
