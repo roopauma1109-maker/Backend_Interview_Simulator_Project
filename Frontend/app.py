@@ -53,7 +53,7 @@ st.title("Backend Interview Simulator")
 # BACKEND URL
 # ==================================================
 
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://backend-interview-simulator-project.onrender.com"
 
 # ==================================================
 # CHECK BACKEND CONNECTION
