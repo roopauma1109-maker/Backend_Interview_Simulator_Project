@@ -1,14 +1,22 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
 from retriever import retrieve
 from prompt_engine import generate_feedback
 from citations import format_citations
 from admin import refresh_database
 
-import json
-import random
-import os
+from database import engine, SessionLocal
+from models import Base, Question
+from crud import get_random_question
+
+
+# ==================================================
+# CREATE DATABASE TABLES
+# ==================================================
+
+Base.metadata.create_all(bind=engine)
 
 
 # ==================================================
@@ -21,75 +29,161 @@ app = FastAPI(
 
 
 # ==================================================
-# REQUEST MODEL
+# DATABASE SESSION
+# ==================================================
+
+def get_db():
+
+    db = SessionLocal()
+
+    try:
+        yield db
+
+    finally:
+        db.close()
+
+
+# ==================================================
+# REQUEST MODELS
 # ==================================================
 
 class AnswerRequest(BaseModel):
     answer: str
 
 
+class QuestionRequest(BaseModel):
+    role: str
+    question: str
+
+
 # ==================================================
-# GET QUESTION
+# GET RANDOM QUESTION
 # ==================================================
 
 @app.get("/get-question")
-def get_question():
+def fetch_question(
+    role: str = "python",
+    db: Session = Depends(get_db)
+):
 
-    try:
+    question = get_random_question(
+        db,
+        role
+    )
 
-        # PROJECT ROOT DIRECTORY
-        base_dir = os.path.dirname(
-            os.path.dirname(__file__)
-        )
-
-        # QUESTIONS FILE PATH
-        file_path = os.path.join(
-            base_dir,
-            "Data",
-            "questions.json"
-        )
-
-        # LOAD JSON DATA
-        with open(
-            file_path,
-            "r",
-            encoding="utf-8"
-        ) as file:
-
-            data = json.load(file)
-
-        # STORE ALL QUESTIONS
-        all_questions = []
-
-        # MERGE ALL CATEGORY QUESTIONS
-        for category in data.values():
-
-            all_questions.extend(category)
-
-        # CHECK EMPTY
-        if not all_questions:
-
-            return {
-                "question": "No questions available."
-            }
-
-        # RANDOM QUESTION
-        random_question = random.choice(
-            all_questions
-        )
+    if not question:
 
         return {
-            "question": random_question.get(
-                "question",
-                "Question field missing"
-            )
+            "question": "No questions found."
         }
 
-    except Exception as e:
+    return {
+        "id": question.id,
+        "role": question.role,
+        "question": question.question
+    }
+
+
+# ==================================================
+# GET ALL ROLES
+# ==================================================
+
+@app.get("/roles")
+def get_roles(
+    db: Session = Depends(get_db)
+):
+
+    roles = db.query(
+        Question.role
+    ).distinct().all()
+
+    return {
+        "roles": [r[0] for r in roles]
+    }
+
+
+# ==================================================
+# GET ALL QUESTIONS
+# ==================================================
+
+@app.get("/all-questions")
+def all_questions(
+    db: Session = Depends(get_db)
+):
+
+    questions = db.query(
+        Question
+    ).all()
+
+    result = []
+
+    for q in questions:
+
+        result.append({
+            "id": q.id,
+            "role": q.role,
+            "question": q.question
+        })
+
+    return result
+
+
+# ==================================================
+# ADD QUESTION
+# ==================================================
+
+@app.post("/add-question")
+def add_question(
+    request: QuestionRequest,
+    db: Session = Depends(get_db)
+):
+
+    new_question = Question(
+        role=request.role,
+        question=request.question
+    )
+
+    db.add(new_question)
+
+    db.commit()
+
+    db.refresh(new_question)
+
+    return {
+        "message": "Question added successfully",
+        "id": new_question.id
+    }
+
+
+# ==================================================
+# DELETE QUESTION
+# ==================================================
+
+@app.delete("/delete-question/{question_id}")
+def delete_question(
+    question_id: int,
+    db: Session = Depends(get_db)
+):
+
+    question = db.query(
+        Question
+    ).filter(
+        Question.id == question_id
+    ).first()
+
+    if not question:
 
         return {
-            "question": f"Error: {str(e)}"
+            "message": "Question not found"
         }
+
+    db.delete(question)
+
+    db.commit()
+
+    return {
+        "message": "Question deleted successfully"
+    }
 
 
 # ==================================================
@@ -139,13 +233,11 @@ def ask(query: str):
             "citations": []
         }
 
-    # BEST ANSWER
     answer = retrieved_docs[0].get(
         "answer",
         "No answer available."
     )
 
-    # CITATIONS
     citations = format_citations(
         retrieved_docs
     )
