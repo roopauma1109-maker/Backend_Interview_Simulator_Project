@@ -1,34 +1,81 @@
 import json
 import os
 
+# ==================================================
+# LOAD QUESTIONS
+# ==================================================
+
+BASE_DIR = os.path.dirname(
+    os.path.abspath(__file__)
+)
+
+PROJECT_DIR = os.path.dirname(BASE_DIR)
+
+DATA_PATH = os.path.join(
+    PROJECT_DIR,
+    "data",
+    "questions.json"
+)
+
+with open(DATA_PATH, "r", encoding="utf-8") as f:
+
+    QUESTIONS_DATA = json.load(f)
+
+# ==================================================
+# RETRIEVE FUNCTION
+# ==================================================
 
 def retrieve(query):
 
-    base_dir = os.path.dirname(
-        os.path.dirname(__file__)
+    query_words = set(
+        query.lower().split()
     )
-
-    file_path = os.path.join(
-        base_dir,
-        "Data",
-        "questions.json"
-    )
-
-    with open(file_path, "r", encoding="utf-8") as file:
-        data = json.load(file)
 
     results = []
 
-    query = query.lower()
+    for item in QUESTIONS_DATA:
 
-    for category in data.values():
+        combined_text = (
 
-        for item in category:
+            item.get("question", "") + " " +
 
-            question = item["question"].lower()
+            item.get("answer", "") + " " +
 
-            if query in question:
+            " ".join(
+                item.get("keywords", [])
+            )
 
-                results.append(item)
+        ).lower()
 
-    return results
+        text_words = set(
+            combined_text.split()
+        )
+
+        score = len(
+            query_words.intersection(
+                text_words
+            )
+        )
+
+        if score > 0:
+
+            results.append({
+                "score": score,
+                "data": item
+            })
+
+    # SORT BEST MATCHES
+
+    results = sorted(
+
+        results,
+
+        key=lambda x: x["score"],
+
+        reverse=True
+    )
+
+    return [
+        r["data"]
+        for r in results[:5]
+    ]

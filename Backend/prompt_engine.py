@@ -1,35 +1,59 @@
-def generate_feedback(answer):
+def generate_feedback(user_answer, correct_answer):
 
-    answer = answer.strip()
+    user_answer = user_answer.lower()
 
-    # Empty answer check
-    if not answer:
-        return "Please provide an answer."
+    correct_answer = correct_answer.lower()
 
-    # Short answer check
-    if len(answer) < 20:
-        return """
-Your answer is too short.
+    user_words = set(
+        user_answer.split()
+    )
 
-Suggestions:
-- Explain the concept clearly
-- Add technical details
-- Include examples if possible
+    correct_words = set(
+        correct_answer.split()
+    )
+
+    common_words = user_words.intersection(
+        correct_words
+    )
+
+    similarity = len(common_words) / max(
+        len(correct_words),
+        1
+    )
+
+    # ==================================================
+    # FEEDBACK
+    # ==================================================
+
+    if similarity >= 0.7:
+
+        return f"""
+Excellent answer.
+
+You covered most important concepts.
+
+Model Answer:
+{correct_answer}
 """
 
-    # Good answer feedback
-    return f"""
-Good attempt.
+    elif similarity >= 0.4:
 
-Your answer:
-{answer}
+        return f"""
+Good answer but missing some important points.
 
-Suggestions for improvement:
-- Add more technical explanation
-- Include real-world examples
-- Mention advantages and disadvantages
-- Explain important concepts in detail
+Try to explain more clearly with technical details.
 
-Overall:
-Your answer shows basic understanding of the topic.
+Model Answer:
+{correct_answer}
+"""
+
+    else:
+
+        return f"""
+Your answer needs improvement.
+
+Focus on key concepts and technical explanation.
+
+Model Answer:
+{correct_answer}
 """

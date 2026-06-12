@@ -1,271 +1,236 @@
-from fastapi import FastAPI, Depends
-from pydantic import BaseModel
-from sqlalchemy.orm import Session
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+import json
+import random
+import os
 
-from retriever import retrieve
-from prompt_engine import generate_feedback
-from citations import format_citations
-from admin import refresh_database
+app = FastAPI(title="AI Interview Simulator API")
 
-from database import engine, SessionLocal
-from models import Base, Question
-from crud import get_random_question
-
-
-# ==================================================
-# CREATE DATABASE TABLES
-# ==================================================
-
-Base.metadata.create_all(bind=engine)
-
-
-# ==================================================
-# FASTAPI APP
-# ==================================================
-
-app = FastAPI(
-    title="Backend Interview Simulator API"
+# =========================
+# CORS
+# =========================
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
+# =========================
+# LOAD QUESTIONS
+# =========================
+# =========================
+# LOAD QUESTIONS
+# =========================
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# ==================================================
-# DATABASE SESSION
-# ==================================================
+# Go outside Backend folder
+PROJECT_DIR = os.path.dirname(BASE_DIR)
 
-def get_db():
+# Your file is inside Data/questions.json
+DATA_PATH = os.path.join(
+    PROJECT_DIR,
+    "Data",
+    "questions.json"
+)
 
-    db = SessionLocal()
+print("📂 Loading from:", DATA_PATH)
 
-    try:
-        yield db
+try:
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        QUESTIONS = json.load(f)
 
-    finally:
-        db.close()
+    print(f"✅ Questions loaded: {len(QUESTIONS)}")
 
+except Exception as e:
+    print(f"❌ Error loading questions: {e}")
+    QUESTIONS = []
 
-# ==================================================
-# REQUEST MODELS
-# ==================================================
+# =========================
+# SESSION STORE
+# =========================
+SESSIONS = {}
 
-class AnswerRequest(BaseModel):
-    answer: str
+# =========================
+# HELPERS
+# =========================
+def match_topic(q_topic, user_topic):
+    if not q_topic or not user_topic:
+        return False
+    q = q_topic.lower().strip()
+    u = user_topic.lower().strip()
+    return q == u or q in u or u in q
 
+def score_answer(user_answer: str, question: dict) -> dict:
+    """Score based on keyword matching and return detailed feedback."""
+    keywords = question.get("keywords", [])
+    correct_answer = question.get("answer", "")
+    user_lower = user_answer.lower()
 
-class QuestionRequest(BaseModel):
-    role: str
-    question: str
+    matched = [k for k in keywords if k.lower() in user_lower]
+    missed = [k for k in keywords if k.lower() not in user_lower]
 
+    if not keywords:
+        score = 50
+    else:
+        score = int((len(matched) / len(keywords)) * 100)
 
-# ==================================================
-# GET RANDOM QUESTION
-# ==================================================
-
-@app.get("/get-question")
-def fetch_question(
-    role: str = "python",
-    db: Session = Depends(get_db)
-):
-
-    question = get_random_question(
-        db,
-        role
-    )
-
-    if not question:
-
-        return {
-            "question": "No questions found."
-        }
-
-    return {
-        "id": question.id,
-        "role": question.role,
-        "question": question.question
-    }
-
-
-# ==================================================
-# GET ALL ROLES
-# ==================================================
-
-@app.get("/roles")
-def get_roles(
-    db: Session = Depends(get_db)
-):
-
-    roles = db.query(
-        Question.role
-    ).distinct().all()
+    if score >= 80:
+        grade = "Excellent"
+    elif score >= 60:
+        grade = "Good"
+    elif score >= 40:
+        grade = "Fair"
+    else:
+        grade = "Needs Improvement"
 
     return {
-        "roles": [r[0] for r in roles]
+        "score": score,
+        "grade": grade,
+        "matched_keywords": matched,
+        "missed_keywords": missed,
+        "model_answer": correct_answer
     }
 
-
-# ==================================================
-# GET ALL QUESTIONS
-# ==================================================
-
-@app.get("/all-questions")
-def all_questions(
-    db: Session = Depends(get_db)
-):
-
-    questions = db.query(
-        Question
-    ).all()
-
-    result = []
-
-    for q in questions:
-
-        result.append({
-            "id": q.id,
-            "role": q.role,
-            "question": q.question
-        })
-
-    return result
-
-
-# ==================================================
-# ADD QUESTION
-# ==================================================
-
-@app.post("/add-question")
-def add_question(
-    request: QuestionRequest,
-    db: Session = Depends(get_db)
-):
-
-    new_question = Question(
-        role=request.role,
-        question=request.question
-    )
-
-    db.add(new_question)
-
-    db.commit()
-
-    db.refresh(new_question)
-
-    return {
-        "message": "Question added successfully",
-        "id": new_question.id
-    }
-
-
-# ==================================================
-# DELETE QUESTION
-# ==================================================
-
-@app.delete("/delete-question/{question_id}")
-def delete_question(
-    question_id: int,
-    db: Session = Depends(get_db)
-):
-
-    question = db.query(
-        Question
-    ).filter(
-        Question.id == question_id
-    ).first()
-
-    if not question:
-
-        return {
-            "message": "Question not found"
-        }
-
-    db.delete(question)
-
-    db.commit()
-
-    return {
-        "message": "Question deleted successfully"
-    }
-
-
-# ==================================================
-# EVALUATE ANSWER
-# ==================================================
-
-@app.post("/evaluate-answer")
-def evaluate_answer(request: AnswerRequest):
-
-    answer = request.answer.strip()
-
-    if not answer:
-
-        return {
-            "feedback": "Please provide an answer."
-        }
-
-    feedback = generate_feedback(answer)
-
-    return {
-        "feedback": feedback
-    }
-
-
-# ==================================================
-# AI ASSISTANT
-# ==================================================
-
-@app.get("/ask")
-def ask(query: str):
-
-    query = query.strip()
-
-    if not query:
-
-        return {
-            "answer": "Please enter a question.",
-            "citations": []
-        }
-
-    retrieved_docs = retrieve(query)
-
-    if not retrieved_docs:
-
-        return {
-            "answer": "No relevant answer found.",
-            "citations": []
-        }
-
-    answer = retrieved_docs[0].get(
-        "answer",
-        "No answer available."
-    )
-
-    citations = format_citations(
-        retrieved_docs
-    )
-
-    return {
-        "question": query,
-        "answer": answer,
-        "citations": citations
-    }
-
-
-# ==================================================
-# REFRESH DATABASE
-# ==================================================
-
-@app.post("/refresh")
-def refresh():
-
-    return refresh_database()
-
-
-# ==================================================
-# ROOT ENDPOINT
-# ==================================================
-
+# =========================
+# ROUTES
+# =========================
 @app.get("/")
 def home():
+    return {
+        "status": "running",
+        "questions_loaded": len(QUESTIONS),
+        "topics": list(set(q["topic"] for q in QUESTIONS))
+    }
+
+@app.get("/topics")
+def get_topics():
+    topics = {}
+    for q in QUESTIONS:
+        t = q["topic"]
+        if t not in topics:
+            topics[t] = {"easy": 0, "medium": 0, "hard": 0}
+        d = q.get("difficulty", "easy")
+        if d in topics[t]:
+            topics[t][d] += 1
+    return {"status": "success", "topics": topics}
+
+@app.get("/questions/{topic}")
+def get_questions(topic: str, difficulty: str = None):
+    filtered = [q for q in QUESTIONS if match_topic(q.get("topic", ""), topic)]
+    if difficulty:
+        filtered = [q for q in filtered if q.get("difficulty", "").lower() == difficulty.lower()]
+    return {"status": "success", "count": len(filtered), "data": filtered}
+
+@app.get("/interview/start")
+def start_interview(topic: str, difficulty: str = "easy", num_questions: int = 5):
+    filtered = [
+        q for q in QUESTIONS
+        if match_topic(q.get("topic", ""), topic)
+        and q.get("difficulty", "").lower() == difficulty.lower()
+    ]
+
+    if not filtered:
+        return {
+            "status": "error",
+            "message": f"No questions found for topic '{topic}' with difficulty '{difficulty}'. Try a different combination."
+        }
+
+    random.shuffle(filtered)
+    selected = filtered[:min(num_questions, len(filtered))]
+
+    session_id = str(random.randint(10000, 99999))
+    SESSIONS[session_id] = {
+        "index": 0,
+        "questions": selected,
+        "total_score": 0,
+        "answers": [],
+        "topic": topic,
+        "difficulty": difficulty
+    }
 
     return {
-        "message": "Backend Interview Simulator API Running"
+        "status": "success",
+        "session_id": session_id,
+        "total_questions": len(selected),
+        "question": selected[0],
+        "question_number": 1
+    }
+
+@app.get("/interview/next/{session_id}")
+def next_question(session_id: str):
+    session = SESSIONS.get(session_id)
+    if not session:
+        return {"status": "error", "message": "Invalid session ID"}
+
+    session["index"] += 1
+
+    if session["index"] >= len(session["questions"]):
+        avg = session["total_score"] // max(len(session["answers"]), 1)
+        return {
+            "status": "completed",
+            "total_score": session["total_score"],
+            "average_score": avg,
+            "answers": session["answers"],
+            "total_questions": len(session["questions"])
+        }
+
+    return {
+        "status": "success",
+        "question": session["questions"][session["index"]],
+        "question_number": session["index"] + 1,
+        "total_questions": len(session["questions"])
+    }
+
+@app.post("/interview/answer/{session_id}")
+def submit_answer(session_id: str, data: dict):
+    session = SESSIONS.get(session_id)
+    if not session:
+        return {"status": "error", "message": "Invalid session ID"}
+
+    answer = data.get("answer", "").strip()
+    if not answer:
+        return {"status": "error", "message": "Answer cannot be empty"}
+
+    q = session["questions"][session["index"]]
+    result = score_answer(answer, q)
+
+    session["total_score"] += result["score"]
+    session["answers"].append({
+        "question": q["question"],
+        "user_answer": answer,
+        "score": result["score"],
+        "grade": result["grade"],
+        "matched_keywords": result["matched_keywords"],
+        "missed_keywords": result["missed_keywords"],
+        "model_answer": result["model_answer"]
+    })
+
+    return {
+        "status": "success",
+        "score": result["score"],
+        "grade": result["grade"],
+        "matched_keywords": result["matched_keywords"],
+        "missed_keywords": result["missed_keywords"],
+        "model_answer": result["model_answer"],
+        "total_score": session["total_score"],
+        "questions_answered": len(session["answers"]),
+        "total_questions": len(session["questions"])
+    }
+
+@app.get("/interview/result/{session_id}")
+def result(session_id: str):
+    session = SESSIONS.get(session_id)
+    if not session:
+        return {"status": "error", "message": "Invalid session ID"}
+    avg = session["total_score"] // max(len(session["answers"]), 1)
+    return {
+        "status": "success",
+        "topic": session["topic"],
+        "difficulty": session["difficulty"],
+        "total_score": session["total_score"],
+        "average_score": avg,
+        "answers": session["answers"],
+        "total_questions": len(session["questions"])
     }
