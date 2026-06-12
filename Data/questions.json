@@ -1,92 +1,202 @@
-{
-  "API": [
-    {
-      "question": "What is an API?",
-      "answer": "An API (Application Programming Interface) allows different software systems to communicate by sending requests and receiving responses."
-    },
-    {
-      "question": "What is REST?",
-      "answer": "REST is an architectural style for designing APIs using HTTP methods and stateless communication."
-    },
-    {
-      "question": "What are HTTP methods?",
-      "answer": "GET (read), POST (create), PUT (update/replace), PATCH (partial update), DELETE (remove)."
-    },
-    {
-      "question": "Difference between PUT and PATCH?",
-      "answer": "PUT updates the entire resource, while PATCH updates only specific fields."
-    },
-    {
-      "question": "What are status codes?",
-      "answer": "HTTP response codes indicating request result, e.g., 200 (success), 201 (created), 400 (bad request), 404 (not found), 500 (server error)."
-    },
-    {
-      "question": "What is idempotency?",
-      "answer": "An operation that produces the same result even if executed multiple times, like GET or PUT."
-    },
-    {
-      "question": "What is JWT?",
-      "answer": "JSON Web Token is used for secure authentication by passing encoded user information between client and server."
-    }
-  ],
-  "DBMS": [
-    {
-      "question": "What is DBMS?",
-      "answer": "DBMS is software used to store, manage, and retrieve data efficiently."
-    },
-    {
-      "question": "Difference between DBMS and RDBMS?",
-      "answer": "RDBMS stores data in tables with relationships, while DBMS may not enforce relationships."
-    },
-    {
-      "question": "What is a primary key?",
-      "answer": "A unique identifier for each record in a table."
-    },
-    {
-      "question": "What is a foreign key?",
-      "answer": "A field that links one table to another by referencing a primary key."
-    },
-    {
-      "question": "What is normalization?",
-      "answer": "Process of organizing data to reduce redundancy and improve integrity."
-    },
-    {
-      "question": "What is indexing?",
-      "answer": "A technique to improve query performance by creating a data structure for fast lookup."
-    },
-    {
-      "question": "What is ACID?",
-      "answer": "Properties ensuring reliable transactions: Atomicity, Consistency, Isolation, Durability."
-    }
-  ],
-  "SystemDesign": [
-    {
-      "question": "What is system design?",
-      "answer": "Process of designing architecture, components, and data flow of a system."
-    },
-    {
-      "question": "What is scalability?",
-      "answer": "Ability of a system to handle increasing load by adding resources."
-    },
-    {
-      "question": "What is load balancing?",
-      "answer": "Distributing traffic across multiple servers to improve performance and reliability."
-    },
-    {
-      "question": "What is caching?",
-      "answer": "Storing frequently accessed data temporarily to reduce load and improve speed."
-    },
-    {
-      "question": "Explain client-server architecture.",
-      "answer": "Client sends requests, server processes them and returns responses."
-    },
-    {
-      "question": "How does your project work?",
-      "answer": "Frontend calls FastAPI backend, backend fetches random question from JSON and returns it to UI."
-    },
-    {
-      "question": "How would you scale your project?",
-      "answer": "By adding load balancers, using databases instead of JSON, and deploying multiple backend instances."
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "topic": "python",
+    "difficulty": "easy",
+    "question": "What is Python? What are its key features?",
+    "answer": "Python is a high-level, interpreted, general-purpose programming language known for its simple and readable syntax. Key features include dynamic typing, automatic memory management (garbage collection), support for multiple programming paradigms (OOP, functional, procedural), a large standard library, and cross-platform compatibility.",
+    "keywords": ["interpreted", "dynamic typing", "readable", "general-purpose", "garbage collection", "paradigms"]
+  },
+  {
+    "id": 2,
+    "topic": "python",
+    "difficulty": "easy",
+    "question": "What is the difference between a list and a tuple in Python?",
+    "answer": "Lists are mutable (can be changed after creation), defined with square brackets [], and slightly slower. Tuples are immutable (cannot be changed), defined with parentheses (), faster, and hashable so they can be used as dictionary keys.",
+    "keywords": ["mutable", "immutable", "list", "tuple", "hashable", "brackets"]
+  },
+  {
+    "id": 3,
+    "topic": "python",
+    "difficulty": "easy",
+    "question": "What are Python decorators?",
+    "answer": "Decorators are a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure. They are usually called before the definition of a function using the @ symbol. They wrap another function and can execute code before and after the wrapped function runs.",
+    "keywords": ["decorator", "function", "wrap", "@ symbol", "modify", "pattern"]
+  },
+  {
+    "id": 4,
+    "topic": "python",
+    "difficulty": "medium",
+    "question": "Explain Python's GIL (Global Interpreter Lock).",
+    "answer": "The GIL is a mutex that protects access to Python objects, preventing multiple native threads from executing Python bytecodes at once. This simplifies CPython's memory management but means multi-threaded CPU-bound programs don't benefit from multiple cores. I/O-bound programs can still benefit from threading. Use multiprocessing for CPU-bound parallelism.",
+    "keywords": ["GIL", "mutex", "threads", "CPython", "CPU-bound", "multiprocessing", "bytecodes"]
+  },
+  {
+    "id": 5,
+    "topic": "python",
+    "difficulty": "medium",
+    "question": "What is the difference between *args and **kwargs?",
+    "answer": "*args allows a function to accept any number of positional arguments as a tuple. **kwargs allows a function to accept any number of keyword arguments as a dictionary. They enable flexible function signatures and are commonly used in decorators and wrapper functions.",
+    "keywords": ["args", "kwargs", "positional", "keyword", "tuple", "dictionary", "flexible"]
+  },
+  {
+    "id": 6,
+    "topic": "python",
+    "difficulty": "hard",
+    "question": "Explain Python's memory management and garbage collection.",
+    "answer": "Python uses reference counting as its primary memory management mechanism. Each object has a reference count; when it drops to zero, the object is deallocated. Python also has a cyclic garbage collector to handle reference cycles. The gc module provides control over this. Memory is managed in private heap space, and the memory manager handles allocation.",
+    "keywords": ["reference counting", "garbage collection", "heap", "cyclic", "deallocation", "gc module"]
+  },
+  {
+    "id": 7,
+    "topic": "dbms",
+    "difficulty": "easy",
+    "question": "What is a database? What is a DBMS?",
+    "answer": "A database is an organized collection of structured data stored electronically. A Database Management System (DBMS) is software that manages databases, providing tools to create, read, update, and delete data. It handles data storage, retrieval, security, and integrity. Examples include MySQL, PostgreSQL, and SQLite.",
+    "keywords": ["database", "DBMS", "structured", "manage", "MySQL", "PostgreSQL", "CRUD"]
+  },
+  {
+    "id": 8,
+    "topic": "dbms",
+    "difficulty": "easy",
+    "question": "What are the different types of SQL commands?",
+    "answer": "SQL commands are categorized into: DDL (Data Definition Language) - CREATE, ALTER, DROP; DML (Data Manipulation Language) - SELECT, INSERT, UPDATE, DELETE; DCL (Data Control Language) - GRANT, REVOKE; TCL (Transaction Control Language) - COMMIT, ROLLBACK, SAVEPOINT.",
+    "keywords": ["DDL", "DML", "DCL", "TCL", "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE"]
+  },
+  {
+    "id": 9,
+    "topic": "dbms",
+    "difficulty": "easy",
+    "question": "What is normalization? Explain 1NF, 2NF, 3NF.",
+    "answer": "Normalization is the process of organizing database tables to reduce redundancy and improve data integrity. 1NF: atomic values, no repeating groups. 2NF: 1NF + no partial dependencies on composite keys. 3NF: 2NF + no transitive dependencies. Higher forms (BCNF, 4NF) provide stricter guarantees.",
+    "keywords": ["normalization", "1NF", "2NF", "3NF", "redundancy", "dependency", "atomic"]
+  },
+  {
+    "id": 10,
+    "topic": "dbms",
+    "difficulty": "medium",
+    "question": "What is the difference between INNER JOIN and OUTER JOIN?",
+    "answer": "INNER JOIN returns only rows where there is a match in both tables. OUTER JOIN returns all rows from one or both tables: LEFT JOIN returns all rows from the left table with NULL for non-matching right rows; RIGHT JOIN is the opposite; FULL OUTER JOIN returns all rows from both tables.",
+    "keywords": ["INNER JOIN", "OUTER JOIN", "LEFT JOIN", "RIGHT JOIN", "NULL", "match", "FULL"]
+  },
+  {
+    "id": 11,
+    "topic": "dbms",
+    "difficulty": "medium",
+    "question": "What are indexes in a database? How do they improve performance?",
+    "answer": "Indexes are data structures that improve query speed by allowing the database to find rows without scanning the entire table. They work like a book index, pointing to data location. Types include B-tree, Hash, and Full-text indexes. While they speed up reads, they slow down writes and use extra storage.",
+    "keywords": ["index", "B-tree", "performance", "query", "scan", "storage", "read", "write"]
+  },
+  {
+    "id": 12,
+    "topic": "dbms",
+    "difficulty": "hard",
+    "question": "Explain ACID properties in database transactions.",
+    "answer": "ACID stands for: Atomicity - transaction is all or nothing; Consistency - database moves from one valid state to another; Isolation - concurrent transactions don't interfere; Durability - committed transactions persist even after system failures. These properties ensure reliable processing of database transactions.",
+    "keywords": ["ACID", "Atomicity", "Consistency", "Isolation", "Durability", "transaction", "commit"]
+  },
+  {
+    "id": 13,
+    "topic": "api",
+    "difficulty": "easy",
+    "question": "What is an API? What does REST stand for?",
+    "answer": "An API (Application Programming Interface) is a set of protocols and tools that allows different software applications to communicate. REST (Representational State Transfer) is an architectural style for designing APIs that uses HTTP methods, is stateless, and treats everything as resources identified by URLs.",
+    "keywords": ["API", "REST", "HTTP", "stateless", "resource", "URL", "interface", "protocol"]
+  },
+  {
+    "id": 14,
+    "topic": "api",
+    "difficulty": "easy",
+    "question": "What are the HTTP methods used in REST APIs?",
+    "answer": "The main HTTP methods are: GET - retrieve data; POST - create new data; PUT - update/replace entire resource; PATCH - partially update a resource; DELETE - remove a resource. These methods correspond to CRUD operations (Create, Read, Update, Delete).",
+    "keywords": ["GET", "POST", "PUT", "PATCH", "DELETE", "CRUD", "HTTP", "method"]
+  },
+  {
+    "id": 15,
+    "topic": "api",
+    "difficulty": "medium",
+    "question": "What are HTTP status codes? Give examples.",
+    "answer": "HTTP status codes indicate the result of an HTTP request. 2xx Success: 200 OK, 201 Created; 3xx Redirection: 301 Moved Permanently, 304 Not Modified; 4xx Client Error: 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found; 5xx Server Error: 500 Internal Server Error, 503 Service Unavailable.",
+    "keywords": ["status code", "200", "201", "400", "401", "404", "500", "2xx", "4xx", "5xx"]
+  },
+  {
+    "id": 16,
+    "topic": "api",
+    "difficulty": "medium",
+    "question": "What is the difference between REST and GraphQL?",
+    "answer": "REST uses multiple endpoints, each returning fixed data structures. GraphQL uses a single endpoint where clients specify exactly what data they need, preventing over-fetching and under-fetching. GraphQL has a strong type system and introspection. REST is simpler and better cached; GraphQL is more flexible for complex, nested data requirements.",
+    "keywords": ["REST", "GraphQL", "endpoint", "over-fetching", "under-fetching", "type system", "query"]
+  },
+  {
+    "id": 17,
+    "topic": "api",
+    "difficulty": "hard",
+    "question": "What is API authentication? Explain JWT tokens.",
+    "answer": "API authentication verifies the identity of clients. JWT (JSON Web Token) is a compact, self-contained token consisting of three parts: Header (algorithm), Payload (claims/data), and Signature. Tokens are signed but not encrypted by default. They are stateless — servers don't need to store session data. Common flow: login returns a JWT, client sends it in Authorization header as Bearer token.",
+    "keywords": ["authentication", "JWT", "token", "header", "payload", "signature", "Bearer", "stateless", "Authorization"]
+  },
+  {
+    "id": 18,
+    "topic": "java",
+    "difficulty": "easy",
+    "question": "What is Java? What are its main features?",
+    "answer": "Java is a high-level, object-oriented, compiled-then-interpreted programming language. Key features: platform independence (Write Once, Run Anywhere) via JVM, strong typing, automatic garbage collection, multithreading support, rich standard library, and strong security model.",
+    "keywords": ["Java", "JVM", "object-oriented", "platform independent", "garbage collection", "multithreading", "compiled"]
+  },
+  {
+    "id": 19,
+    "topic": "java",
+    "difficulty": "easy",
+    "question": "What is the difference between JDK, JRE, and JVM?",
+    "answer": "JVM (Java Virtual Machine) executes Java bytecode and provides platform independence. JRE (Java Runtime Environment) includes JVM plus libraries needed to run Java programs. JDK (Java Development Kit) includes JRE plus development tools like compiler (javac), debugger, and other utilities needed to develop Java applications.",
+    "keywords": ["JDK", "JRE", "JVM", "bytecode", "compiler", "runtime", "development", "javac"]
+  },
+  {
+    "id": 20,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "What are the four pillars of OOP in Java?",
+    "answer": "The four pillars are: Encapsulation - binding data and methods together, hiding internal state using access modifiers; Abstraction - hiding complex implementation, showing only essential features using abstract classes/interfaces; Inheritance - a class acquiring properties of another class using extends; Polymorphism - same method behaving differently in different contexts (method overloading and overriding).",
+    "keywords": ["encapsulation", "abstraction", "inheritance", "polymorphism", "OOP", "extends", "overriding", "interface"]
+  },
+  {
+    "id": 21,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "What is the difference between abstract class and interface in Java?",
+    "answer": "Abstract class can have both abstract and concrete methods, instance variables, and constructors. A class can extend only one abstract class. Interface can only have abstract methods (before Java 8), constants, and default/static methods (Java 8+). A class can implement multiple interfaces. Use abstract class for IS-A relationship with shared state; use interface for defining contracts.",
+    "keywords": ["abstract class", "interface", "implements", "extends", "multiple", "concrete", "default method"]
+  },
+  {
+    "id": 22,
+    "topic": "java",
+    "difficulty": "hard",
+    "question": "Explain Java's memory model: Stack vs Heap.",
+    "answer": "Stack memory stores method frames, local variables, and references. Each thread has its own stack. It follows LIFO and is automatically managed. Heap memory stores all objects and class instances, shared across threads. The JVM's garbage collector manages heap memory. String literals go to the String Pool (part of heap in Java 8+). PermGen was replaced by Metaspace in Java 8.",
+    "keywords": ["stack", "heap", "LIFO", "garbage collector", "String Pool", "Metaspace", "thread", "PermGen"]
+  },
+  {
+    "id": 23,
+    "topic": "os",
+    "difficulty": "easy",
+    "question": "What is an operating system? What are its main functions?",
+    "answer": "An operating system (OS) is system software that manages hardware and software resources and provides services to programs. Main functions: process management, memory management, file system management, device management (I/O), security and access control, and providing a user interface.",
+    "keywords": ["operating system", "process", "memory", "file system", "hardware", "management", "interface"]
+  },
+  {
+    "id": 24,
+    "topic": "os",
+    "difficulty": "medium",
+    "question": "What is the difference between a process and a thread?",
+    "answer": "A process is an independent program in execution with its own memory space, resources, and address space. A thread is a unit of execution within a process, sharing the process's memory and resources. Threads are lighter weight, faster to create, and communicate more easily than processes, but a crash in one thread can affect the whole process.",
+    "keywords": ["process", "thread", "memory", "lightweight", "address space", "execution", "share"]
+  },
+  {
+    "id": 25,
+    "topic": "os",
+    "difficulty": "hard",
+    "question": "What is deadlock? What are the four necessary conditions for deadlock?",
+    "answer": "Deadlock is a situation where two or more processes are permanently blocked, each waiting for a resource held by another. The four necessary conditions (Coffman conditions) are: Mutual Exclusion - resource held by only one process; Hold and Wait - process holds one resource while waiting for another; No Preemption - resources can't be forcibly taken; Circular Wait - circular chain of processes waiting for resources.",
+    "keywords": ["deadlock", "mutual exclusion", "hold and wait", "no preemption", "circular wait", "Coffman", "blocked"]
+  }
+]
