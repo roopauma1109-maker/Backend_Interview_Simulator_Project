@@ -3,5 +3,10 @@
         "answer": "what is java?",
         "feedback": "\nYour answer is too short.\n\nSuggestions:\n- Explain the concept clearly\n- Add technical details\n- Include examples if possible\n",
         "time": "2026-05-15 18:26:45.392220"
+    },
+    {
+        "answer": "Api is appilaction programming interface used to connect the frontend and backend",
+        "feedback": "\nGood attempt.\n\nYour answer:\nApi is appilaction programming interface used to connect the frontend and backend\n\nSuggestions for improvement:\n- Add more technical explanation\n- Include real-world examples\n- Mention advantages and disadvantages\n- Explain important concepts in detail\n\nOverall:\nYour answer shows basic understanding of the topic.\n",
+        "time": "2026-05-18 20:45:19.272301"
     }
 ]
