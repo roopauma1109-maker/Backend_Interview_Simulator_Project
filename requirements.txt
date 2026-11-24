@@ -3,3 +3,7 @@ uvicorn
 streamlit
 requests
 python-dotenv
+sqlalchemy
+passlib[bcrypt]
+python-multipart
+pypdf

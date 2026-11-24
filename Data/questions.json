@@ -5,7 +5,14 @@
     "difficulty": "easy",
     "question": "What is Python? What are its key features?",
     "answer": "Python is a high-level, interpreted, general-purpose programming language known for its simple and readable syntax. Key features include dynamic typing, automatic memory management (garbage collection), support for multiple programming paradigms (OOP, functional, procedural), a large standard library, and cross-platform compatibility.",
-    "keywords": ["interpreted", "dynamic typing", "readable", "general-purpose", "garbage collection", "paradigms"]
+    "keywords": [
+      "interpreted",
+      "dynamic typing",
+      "readable",
+      "general-purpose",
+      "garbage collection",
+      "paradigms"
+    ]
   },
   {
     "id": 2,
@@ -13,7 +20,14 @@
     "difficulty": "easy",
     "question": "What is the difference between a list and a tuple in Python?",
     "answer": "Lists are mutable (can be changed after creation), defined with square brackets [], and slightly slower. Tuples are immutable (cannot be changed), defined with parentheses (), faster, and hashable so they can be used as dictionary keys.",
-    "keywords": ["mutable", "immutable", "list", "tuple", "hashable", "brackets"]
+    "keywords": [
+      "mutable",
+      "immutable",
+      "list",
+      "tuple",
+      "hashable",
+      "brackets"
+    ]
   },
   {
     "id": 3,
@@ -21,7 +35,14 @@
     "difficulty": "easy",
     "question": "What are Python decorators?",
     "answer": "Decorators are a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure. They are usually called before the definition of a function using the @ symbol. They wrap another function and can execute code before and after the wrapped function runs.",
-    "keywords": ["decorator", "function", "wrap", "@ symbol", "modify", "pattern"]
+    "keywords": [
+      "decorator",
+      "function",
+      "wrap",
+      "@ symbol",
+      "modify",
+      "pattern"
+    ]
   },
   {
     "id": 4,
@@ -29,7 +50,15 @@
     "difficulty": "medium",
     "question": "Explain Python's GIL (Global Interpreter Lock).",
     "answer": "The GIL is a mutex that protects access to Python objects, preventing multiple native threads from executing Python bytecodes at once. This simplifies CPython's memory management but means multi-threaded CPU-bound programs don't benefit from multiple cores. I/O-bound programs can still benefit from threading. Use multiprocessing for CPU-bound parallelism.",
-    "keywords": ["GIL", "mutex", "threads", "CPython", "CPU-bound", "multiprocessing", "bytecodes"]
+    "keywords": [
+      "GIL",
+      "mutex",
+      "threads",
+      "CPython",
+      "CPU-bound",
+      "multiprocessing",
+      "bytecodes"
+    ]
   },
   {
     "id": 5,
@@ -37,7 +66,15 @@
     "difficulty": "medium",
     "question": "What is the difference between *args and **kwargs?",
     "answer": "*args allows a function to accept any number of positional arguments as a tuple. **kwargs allows a function to accept any number of keyword arguments as a dictionary. They enable flexible function signatures and are commonly used in decorators and wrapper functions.",
-    "keywords": ["args", "kwargs", "positional", "keyword", "tuple", "dictionary", "flexible"]
+    "keywords": [
+      "args",
+      "kwargs",
+      "positional",
+      "keyword",
+      "tuple",
+      "dictionary",
+      "flexible"
+    ]
   },
   {
     "id": 6,
@@ -45,7 +82,14 @@
     "difficulty": "hard",
     "question": "Explain Python's memory management and garbage collection.",
     "answer": "Python uses reference counting as its primary memory management mechanism. Each object has a reference count; when it drops to zero, the object is deallocated. Python also has a cyclic garbage collector to handle reference cycles. The gc module provides control over this. Memory is managed in private heap space, and the memory manager handles allocation.",
-    "keywords": ["reference counting", "garbage collection", "heap", "cyclic", "deallocation", "gc module"]
+    "keywords": [
+      "reference counting",
+      "garbage collection",
+      "heap",
+      "cyclic",
+      "deallocation",
+      "gc module"
+    ]
   },
   {
     "id": 7,
@@ -53,7 +97,15 @@
     "difficulty": "easy",
     "question": "What is a database? What is a DBMS?",
     "answer": "A database is an organized collection of structured data stored electronically. A Database Management System (DBMS) is software that manages databases, providing tools to create, read, update, and delete data. It handles data storage, retrieval, security, and integrity. Examples include MySQL, PostgreSQL, and SQLite.",
-    "keywords": ["database", "DBMS", "structured", "manage", "MySQL", "PostgreSQL", "CRUD"]
+    "keywords": [
+      "database",
+      "DBMS",
+      "structured",
+      "manage",
+      "MySQL",
+      "PostgreSQL",
+      "CRUD"
+    ]
   },
   {
     "id": 8,
@@ -61,7 +113,17 @@
     "difficulty": "easy",
     "question": "What are the different types of SQL commands?",
     "answer": "SQL commands are categorized into: DDL (Data Definition Language) - CREATE, ALTER, DROP; DML (Data Manipulation Language) - SELECT, INSERT, UPDATE, DELETE; DCL (Data Control Language) - GRANT, REVOKE; TCL (Transaction Control Language) - COMMIT, ROLLBACK, SAVEPOINT.",
-    "keywords": ["DDL", "DML", "DCL", "TCL", "SELECT", "INSERT", "UPDATE", "DELETE", "CREATE"]
+    "keywords": [
+      "DDL",
+      "DML",
+      "DCL",
+      "TCL",
+      "SELECT",
+      "INSERT",
+      "UPDATE",
+      "DELETE",
+      "CREATE"
+    ]
   },
   {
     "id": 9,
@@ -69,7 +131,15 @@
     "difficulty": "easy",
     "question": "What is normalization? Explain 1NF, 2NF, 3NF.",
     "answer": "Normalization is the process of organizing database tables to reduce redundancy and improve data integrity. 1NF: atomic values, no repeating groups. 2NF: 1NF + no partial dependencies on composite keys. 3NF: 2NF + no transitive dependencies. Higher forms (BCNF, 4NF) provide stricter guarantees.",
-    "keywords": ["normalization", "1NF", "2NF", "3NF", "redundancy", "dependency", "atomic"]
+    "keywords": [
+      "normalization",
+      "1NF",
+      "2NF",
+      "3NF",
+      "redundancy",
+      "dependency",
+      "atomic"
+    ]
   },
   {
     "id": 10,
@@ -77,7 +147,15 @@
     "difficulty": "medium",
     "question": "What is the difference between INNER JOIN and OUTER JOIN?",
     "answer": "INNER JOIN returns only rows where there is a match in both tables. OUTER JOIN returns all rows from one or both tables: LEFT JOIN returns all rows from the left table with NULL for non-matching right rows; RIGHT JOIN is the opposite; FULL OUTER JOIN returns all rows from both tables.",
-    "keywords": ["INNER JOIN", "OUTER JOIN", "LEFT JOIN", "RIGHT JOIN", "NULL", "match", "FULL"]
+    "keywords": [
+      "INNER JOIN",
+      "OUTER JOIN",
+      "LEFT JOIN",
+      "RIGHT JOIN",
+      "NULL",
+      "match",
+      "FULL"
+    ]
   },
   {
     "id": 11,
@@ -85,7 +163,16 @@
     "difficulty": "medium",
     "question": "What are indexes in a database? How do they improve performance?",
     "answer": "Indexes are data structures that improve query speed by allowing the database to find rows without scanning the entire table. They work like a book index, pointing to data location. Types include B-tree, Hash, and Full-text indexes. While they speed up reads, they slow down writes and use extra storage.",
-    "keywords": ["index", "B-tree", "performance", "query", "scan", "storage", "read", "write"]
+    "keywords": [
+      "index",
+      "B-tree",
+      "performance",
+      "query",
+      "scan",
+      "storage",
+      "read",
+      "write"
+    ]
   },
   {
     "id": 12,
@@ -93,7 +180,15 @@
     "difficulty": "hard",
     "question": "Explain ACID properties in database transactions.",
     "answer": "ACID stands for: Atomicity - transaction is all or nothing; Consistency - database moves from one valid state to another; Isolation - concurrent transactions don't interfere; Durability - committed transactions persist even after system failures. These properties ensure reliable processing of database transactions.",
-    "keywords": ["ACID", "Atomicity", "Consistency", "Isolation", "Durability", "transaction", "commit"]
+    "keywords": [
+      "ACID",
+      "Atomicity",
+      "Consistency",
+      "Isolation",
+      "Durability",
+      "transaction",
+      "commit"
+    ]
   },
   {
     "id": 13,
@@ -101,7 +196,16 @@
     "difficulty": "easy",
     "question": "What is an API? What does REST stand for?",
     "answer": "An API (Application Programming Interface) is a set of protocols and tools that allows different software applications to communicate. REST (Representational State Transfer) is an architectural style for designing APIs that uses HTTP methods, is stateless, and treats everything as resources identified by URLs.",
-    "keywords": ["API", "REST", "HTTP", "stateless", "resource", "URL", "interface", "protocol"]
+    "keywords": [
+      "API",
+      "REST",
+      "HTTP",
+      "stateless",
+      "resource",
+      "URL",
+      "interface",
+      "protocol"
+    ]
   },
   {
     "id": 14,
@@ -109,7 +213,16 @@
     "difficulty": "easy",
     "question": "What are the HTTP methods used in REST APIs?",
     "answer": "The main HTTP methods are: GET - retrieve data; POST - create new data; PUT - update/replace entire resource; PATCH - partially update a resource; DELETE - remove a resource. These methods correspond to CRUD operations (Create, Read, Update, Delete).",
-    "keywords": ["GET", "POST", "PUT", "PATCH", "DELETE", "CRUD", "HTTP", "method"]
+    "keywords": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE",
+      "CRUD",
+      "HTTP",
+      "method"
+    ]
   },
   {
     "id": 15,
@@ -117,7 +230,18 @@
     "difficulty": "medium",
     "question": "What are HTTP status codes? Give examples.",
     "answer": "HTTP status codes indicate the result of an HTTP request. 2xx Success: 200 OK, 201 Created; 3xx Redirection: 301 Moved Permanently, 304 Not Modified; 4xx Client Error: 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found; 5xx Server Error: 500 Internal Server Error, 503 Service Unavailable.",
-    "keywords": ["status code", "200", "201", "400", "401", "404", "500", "2xx", "4xx", "5xx"]
+    "keywords": [
+      "status code",
+      "200",
+      "201",
+      "400",
+      "401",
+      "404",
+      "500",
+      "2xx",
+      "4xx",
+      "5xx"
+    ]
   },
   {
     "id": 16,
@@ -125,7 +249,15 @@
     "difficulty": "medium",
     "question": "What is the difference between REST and GraphQL?",
     "answer": "REST uses multiple endpoints, each returning fixed data structures. GraphQL uses a single endpoint where clients specify exactly what data they need, preventing over-fetching and under-fetching. GraphQL has a strong type system and introspection. REST is simpler and better cached; GraphQL is more flexible for complex, nested data requirements.",
-    "keywords": ["REST", "GraphQL", "endpoint", "over-fetching", "under-fetching", "type system", "query"]
+    "keywords": [
+      "REST",
+      "GraphQL",
+      "endpoint",
+      "over-fetching",
+      "under-fetching",
+      "type system",
+      "query"
+    ]
   },
   {
     "id": 17,
@@ -133,7 +265,17 @@
     "difficulty": "hard",
     "question": "What is API authentication? Explain JWT tokens.",
     "answer": "API authentication verifies the identity of clients. JWT (JSON Web Token) is a compact, self-contained token consisting of three parts: Header (algorithm), Payload (claims/data), and Signature. Tokens are signed but not encrypted by default. They are stateless — servers don't need to store session data. Common flow: login returns a JWT, client sends it in Authorization header as Bearer token.",
-    "keywords": ["authentication", "JWT", "token", "header", "payload", "signature", "Bearer", "stateless", "Authorization"]
+    "keywords": [
+      "authentication",
+      "JWT",
+      "token",
+      "header",
+      "payload",
+      "signature",
+      "Bearer",
+      "stateless",
+      "Authorization"
+    ]
   },
   {
     "id": 18,
@@ -141,7 +283,15 @@
     "difficulty": "easy",
     "question": "What is Java? What are its main features?",
     "answer": "Java is a high-level, object-oriented, compiled-then-interpreted programming language. Key features: platform independence (Write Once, Run Anywhere) via JVM, strong typing, automatic garbage collection, multithreading support, rich standard library, and strong security model.",
-    "keywords": ["Java", "JVM", "object-oriented", "platform independent", "garbage collection", "multithreading", "compiled"]
+    "keywords": [
+      "Java",
+      "JVM",
+      "object-oriented",
+      "platform independent",
+      "garbage collection",
+      "multithreading",
+      "compiled"
+    ]
   },
   {
     "id": 19,
@@ -149,7 +299,16 @@
     "difficulty": "easy",
     "question": "What is the difference between JDK, JRE, and JVM?",
     "answer": "JVM (Java Virtual Machine) executes Java bytecode and provides platform independence. JRE (Java Runtime Environment) includes JVM plus libraries needed to run Java programs. JDK (Java Development Kit) includes JRE plus development tools like compiler (javac), debugger, and other utilities needed to develop Java applications.",
-    "keywords": ["JDK", "JRE", "JVM", "bytecode", "compiler", "runtime", "development", "javac"]
+    "keywords": [
+      "JDK",
+      "JRE",
+      "JVM",
+      "bytecode",
+      "compiler",
+      "runtime",
+      "development",
+      "javac"
+    ]
   },
   {
     "id": 20,
@@ -157,7 +316,16 @@
     "difficulty": "medium",
     "question": "What are the four pillars of OOP in Java?",
     "answer": "The four pillars are: Encapsulation - binding data and methods together, hiding internal state using access modifiers; Abstraction - hiding complex implementation, showing only essential features using abstract classes/interfaces; Inheritance - a class acquiring properties of another class using extends; Polymorphism - same method behaving differently in different contexts (method overloading and overriding).",
-    "keywords": ["encapsulation", "abstraction", "inheritance", "polymorphism", "OOP", "extends", "overriding", "interface"]
+    "keywords": [
+      "encapsulation",
+      "abstraction",
+      "inheritance",
+      "polymorphism",
+      "OOP",
+      "extends",
+      "overriding",
+      "interface"
+    ]
   },
   {
     "id": 21,
@@ -165,7 +333,15 @@
     "difficulty": "medium",
     "question": "What is the difference between abstract class and interface in Java?",
     "answer": "Abstract class can have both abstract and concrete methods, instance variables, and constructors. A class can extend only one abstract class. Interface can only have abstract methods (before Java 8), constants, and default/static methods (Java 8+). A class can implement multiple interfaces. Use abstract class for IS-A relationship with shared state; use interface for defining contracts.",
-    "keywords": ["abstract class", "interface", "implements", "extends", "multiple", "concrete", "default method"]
+    "keywords": [
+      "abstract class",
+      "interface",
+      "implements",
+      "extends",
+      "multiple",
+      "concrete",
+      "default method"
+    ]
   },
   {
     "id": 22,
@@ -173,7 +349,16 @@
     "difficulty": "hard",
     "question": "Explain Java's memory model: Stack vs Heap.",
     "answer": "Stack memory stores method frames, local variables, and references. Each thread has its own stack. It follows LIFO and is automatically managed. Heap memory stores all objects and class instances, shared across threads. The JVM's garbage collector manages heap memory. String literals go to the String Pool (part of heap in Java 8+). PermGen was replaced by Metaspace in Java 8.",
-    "keywords": ["stack", "heap", "LIFO", "garbage collector", "String Pool", "Metaspace", "thread", "PermGen"]
+    "keywords": [
+      "stack",
+      "heap",
+      "LIFO",
+      "garbage collector",
+      "String Pool",
+      "Metaspace",
+      "thread",
+      "PermGen"
+    ]
   },
   {
     "id": 23,
@@ -181,7 +366,15 @@
     "difficulty": "easy",
     "question": "What is an operating system? What are its main functions?",
     "answer": "An operating system (OS) is system software that manages hardware and software resources and provides services to programs. Main functions: process management, memory management, file system management, device management (I/O), security and access control, and providing a user interface.",
-    "keywords": ["operating system", "process", "memory", "file system", "hardware", "management", "interface"]
+    "keywords": [
+      "operating system",
+      "process",
+      "memory",
+      "file system",
+      "hardware",
+      "management",
+      "interface"
+    ]
   },
   {
     "id": 24,
@@ -189,7 +382,15 @@
     "difficulty": "medium",
     "question": "What is the difference between a process and a thread?",
     "answer": "A process is an independent program in execution with its own memory space, resources, and address space. A thread is a unit of execution within a process, sharing the process's memory and resources. Threads are lighter weight, faster to create, and communicate more easily than processes, but a crash in one thread can affect the whole process.",
-    "keywords": ["process", "thread", "memory", "lightweight", "address space", "execution", "share"]
+    "keywords": [
+      "process",
+      "thread",
+      "memory",
+      "lightweight",
+      "address space",
+      "execution",
+      "share"
+    ]
   },
   {
     "id": 25,
@@ -197,6 +398,1046 @@
     "difficulty": "hard",
     "question": "What is deadlock? What are the four necessary conditions for deadlock?",
     "answer": "Deadlock is a situation where two or more processes are permanently blocked, each waiting for a resource held by another. The four necessary conditions (Coffman conditions) are: Mutual Exclusion - resource held by only one process; Hold and Wait - process holds one resource while waiting for another; No Preemption - resources can't be forcibly taken; Circular Wait - circular chain of processes waiting for resources.",
-    "keywords": ["deadlock", "mutual exclusion", "hold and wait", "no preemption", "circular wait", "Coffman", "blocked"]
+    "keywords": [
+      "deadlock",
+      "mutual exclusion",
+      "hold and wait",
+      "no preemption",
+      "circular wait",
+      "Coffman",
+      "blocked"
+    ]
+  },
+  {
+    "id": 26,
+    "topic": "python",
+    "difficulty": "easy",
+    "question": "What is the difference between == and is in Python?",
+    "answer": "== compares the values of two objects. is checks whether two references point to the same object in memory. Use == for value comparison and is commonly for checking None.",
+    "keywords": [
+      "equality",
+      "identity",
+      "object",
+      "memory",
+      "None"
+    ]
+  },
+  {
+    "id": 27,
+    "topic": "python",
+    "difficulty": "easy",
+    "question": "What are Python variables and how is dynamic typing used?",
+    "answer": "A variable is a name that refers to an object. Python is dynamically typed, so a variable does not need a declared type and can refer to objects of different types during execution.",
+    "keywords": [
+      "variable",
+      "dynamic typing",
+      "object",
+      "type"
+    ]
+  },
+  {
+    "id": 28,
+    "topic": "python",
+    "difficulty": "easy",
+    "question": "What is a dictionary in Python?",
+    "answer": "A dictionary is a mutable collection that stores data as key-value pairs. Keys must be hashable and unique. Values can be of different types. Dictionaries are created using curly braces.",
+    "keywords": [
+      "dictionary",
+      "key",
+      "value",
+      "mutable",
+      "hashable"
+    ]
+  },
+  {
+    "id": 29,
+    "topic": "python",
+    "difficulty": "easy",
+    "question": "What is the purpose of the range() function?",
+    "answer": "range() generates a sequence of integers, commonly used in for loops. It accepts start, stop, and optional step values; the stop value is excluded.",
+    "keywords": [
+      "range",
+      "sequence",
+      "loop",
+      "start",
+      "stop",
+      "step"
+    ]
+  },
+  {
+    "id": 30,
+    "topic": "python",
+    "difficulty": "medium",
+    "question": "What is list comprehension?",
+    "answer": "List comprehension is a concise way to create a list from an iterable, optionally applying an expression and a condition. It can make simple transformations easier to read.",
+    "keywords": [
+      "list comprehension",
+      "iterable",
+      "expression",
+      "condition"
+    ]
+  },
+  {
+    "id": 31,
+    "topic": "python",
+    "difficulty": "medium",
+    "question": "What is the difference between shallow copy and deep copy?",
+    "answer": "A shallow copy creates a new outer object but keeps references to nested objects. A deep copy recursively copies nested objects too. The copy module provides copy() and deepcopy().",
+    "keywords": [
+      "shallow copy",
+      "deep copy",
+      "nested objects",
+      "copy module"
+    ]
+  },
+  {
+    "id": 32,
+    "topic": "python",
+    "difficulty": "medium",
+    "question": "What is a lambda function?",
+    "answer": "A lambda is a small anonymous function defined with the lambda keyword. It can contain one expression and is often used for short operations such as sorting keys or mapping values.",
+    "keywords": [
+      "lambda",
+      "anonymous function",
+      "expression",
+      "map",
+      "sorting"
+    ]
+  },
+  {
+    "id": 33,
+    "topic": "python",
+    "difficulty": "medium",
+    "question": "What is the difference between an iterator and an iterable?",
+    "answer": "An iterable is an object that can return an iterator, usually through iter(). An iterator produces values one at a time through next() and keeps its iteration state.",
+    "keywords": [
+      "iterable",
+      "iterator",
+      "iter",
+      "next",
+      "iteration"
+    ]
+  },
+  {
+    "id": 34,
+    "topic": "python",
+    "difficulty": "medium",
+    "question": "What is exception handling in Python?",
+    "answer": "Exception handling manages runtime errors using try and except. The else block runs when no exception occurs, and finally runs whether an exception occurs or not.",
+    "keywords": [
+      "exception",
+      "try",
+      "except",
+      "else",
+      "finally",
+      "error"
+    ]
+  },
+  {
+    "id": 35,
+    "topic": "python",
+    "difficulty": "medium",
+    "question": "What is the purpose of the with statement?",
+    "answer": "The with statement uses a context manager to manage setup and cleanup automatically. For example, opening a file with with ensures it is closed after the block finishes.",
+    "keywords": [
+      "with",
+      "context manager",
+      "file",
+      "cleanup",
+      "close"
+    ]
+  },
+  {
+    "id": 36,
+    "topic": "python",
+    "difficulty": "hard",
+    "question": "What are generators in Python?",
+    "answer": "Generators produce values lazily, one at a time, using yield. They preserve their state between iterations and can reduce memory usage when processing large sequences.",
+    "keywords": [
+      "generator",
+      "yield",
+      "lazy evaluation",
+      "memory",
+      "iteration"
+    ]
+  },
+  {
+    "id": 37,
+    "topic": "python",
+    "difficulty": "hard",
+    "question": "What is the difference between concurrency and parallelism in Python?",
+    "answer": "Concurrency is managing multiple tasks during overlapping periods; parallelism is executing tasks at the same time. Threads are often useful for I/O-bound work, while multiprocessing can use multiple CPU cores for CPU-bound work.",
+    "keywords": [
+      "concurrency",
+      "parallelism",
+      "threading",
+      "multiprocessing",
+      "CPU-bound",
+      "I/O-bound"
+    ]
+  },
+  {
+    "id": 38,
+    "topic": "python",
+    "difficulty": "hard",
+    "question": "How do Python's *args and **kwargs work when calling a function?",
+    "answer": "* unpacks an iterable into positional arguments, while ** unpacks a mapping into keyword arguments. In function definitions, *args collects extra positional arguments and **kwargs collects extra keyword arguments.",
+    "keywords": [
+      "unpacking",
+      "positional",
+      "keyword",
+      "args",
+      "kwargs"
+    ]
+  },
+  {
+    "id": 39,
+    "topic": "python",
+    "difficulty": "hard",
+    "question": "What is a Python module and package?",
+    "answer": "A module is a Python file containing definitions and statements. A package organizes related modules in a directory structure and can provide a namespace for them.",
+    "keywords": [
+      "module",
+      "package",
+      "import",
+      "namespace",
+      "directory"
+    ]
+  },
+  {
+    "id": 40,
+    "topic": "dbms",
+    "difficulty": "easy",
+    "question": "What is a primary key?",
+    "answer": "A primary key is a column or set of columns that uniquely identifies each row in a table. It must contain unique values and cannot contain NULL values.",
+    "keywords": [
+      "primary key",
+      "unique",
+      "NULL",
+      "row",
+      "table"
+    ]
+  },
+  {
+    "id": 41,
+    "topic": "dbms",
+    "difficulty": "easy",
+    "question": "What is a foreign key?",
+    "answer": "A foreign key is a column or set of columns that references a candidate or primary key in another table or the same table. It helps maintain referential integrity.",
+    "keywords": [
+      "foreign key",
+      "reference",
+      "referential integrity",
+      "table"
+    ]
+  },
+  {
+    "id": 42,
+    "topic": "dbms",
+    "difficulty": "easy",
+    "question": "What is the difference between DELETE, TRUNCATE, and DROP?",
+    "answer": "DELETE removes selected rows and can use a WHERE clause. TRUNCATE removes all rows while retaining the table structure. DROP removes the table structure and its data. Transaction and identity behavior can vary by database.",
+    "keywords": [
+      "DELETE",
+      "TRUNCATE",
+      "DROP",
+      "WHERE",
+      "table structure"
+    ]
+  },
+  {
+    "id": 43,
+    "topic": "dbms",
+    "difficulty": "easy",
+    "question": "What is a UNIQUE constraint?",
+    "answer": "A UNIQUE constraint ensures that values in a column or combination of columns do not duplicate. NULL handling can differ between database systems.",
+    "keywords": [
+      "unique constraint",
+      "duplicate",
+      "column",
+      "NULL"
+    ]
+  },
+  {
+    "id": 44,
+    "topic": "dbms",
+    "difficulty": "medium",
+    "question": "What is a candidate key?",
+    "answer": "A candidate key is a minimal set of attributes that uniquely identifies a row. A table can have multiple candidate keys, and one is selected as the primary key.",
+    "keywords": [
+      "candidate key",
+      "minimal",
+      "unique",
+      "primary key"
+    ]
+  },
+  {
+    "id": 45,
+    "topic": "dbms",
+    "difficulty": "medium",
+    "question": "What is the difference between WHERE and HAVING?",
+    "answer": "WHERE filters rows before grouping and aggregation. HAVING filters groups after GROUP BY and is commonly used with aggregate conditions.",
+    "keywords": [
+      "WHERE",
+      "HAVING",
+      "GROUP BY",
+      "aggregate",
+      "filter"
+    ]
+  },
+  {
+    "id": 46,
+    "topic": "dbms",
+    "difficulty": "medium",
+    "question": "What is a database view?",
+    "answer": "A view is a named query presented like a virtual table. It can simplify complex queries and restrict access to selected data. A normal view generally stores the query definition rather than a separate copy of its rows.",
+    "keywords": [
+      "view",
+      "virtual table",
+      "query",
+      "security"
+    ]
+  },
+  {
+    "id": 47,
+    "topic": "dbms",
+    "difficulty": "medium",
+    "question": "What is a subquery?",
+    "answer": "A subquery is a query nested inside another SQL statement. It can appear in clauses such as SELECT, FROM, or WHERE and may be correlated or non-correlated.",
+    "keywords": [
+      "subquery",
+      "nested query",
+      "correlated",
+      "SQL"
+    ]
+  },
+  {
+    "id": 48,
+    "topic": "dbms",
+    "difficulty": "medium",
+    "question": "What is the difference between UNION and UNION ALL?",
+    "answer": "UNION combines result sets and removes duplicate rows. UNION ALL combines result sets without removing duplicates and is generally faster when duplicate elimination is unnecessary.",
+    "keywords": [
+      "UNION",
+      "UNION ALL",
+      "duplicates",
+      "result set"
+    ]
+  },
+  {
+    "id": 49,
+    "topic": "dbms",
+    "difficulty": "medium",
+    "question": "What is a stored procedure?",
+    "answer": "A stored procedure is a named collection of SQL statements stored in the database and executed when called. It can accept parameters and may contain control-flow logic.",
+    "keywords": [
+      "stored procedure",
+      "SQL",
+      "parameters",
+      "database"
+    ]
+  },
+  {
+    "id": 50,
+    "topic": "dbms",
+    "difficulty": "hard",
+    "question": "What is a database transaction?",
+    "answer": "A transaction is a logical unit of database work. It may contain multiple statements and is committed as a unit or rolled back to preserve consistency according to transaction rules.",
+    "keywords": [
+      "transaction",
+      "commit",
+      "rollback",
+      "consistency"
+    ]
+  },
+  {
+    "id": 51,
+    "topic": "dbms",
+    "difficulty": "hard",
+    "question": "What is the difference between clustered and non-clustered indexes?",
+    "answer": "A clustered index determines or closely corresponds to the physical organization of table rows, depending on the database. A non-clustered index is a separate structure containing keys and row references. A table's supported number of clustered indexes is database-specific.",
+    "keywords": [
+      "clustered index",
+      "non-clustered index",
+      "row",
+      "index structure"
+    ]
+  },
+  {
+    "id": 52,
+    "topic": "dbms",
+    "difficulty": "hard",
+    "question": "What is query optimization?",
+    "answer": "Query optimization is the process of choosing an efficient execution plan for a SQL query. A database optimizer considers factors such as indexes, table statistics, join order, and estimated costs.",
+    "keywords": [
+      "query optimization",
+      "execution plan",
+      "index",
+      "statistics",
+      "join"
+    ]
+  },
+  {
+    "id": 53,
+    "topic": "dbms",
+    "difficulty": "hard",
+    "question": "What is the difference between deadlock and blocking in a database?",
+    "answer": "Blocking occurs when one transaction waits for a lock held by another. A deadlock occurs when transactions form a cycle of waits, so none can proceed; the database typically detects it and aborts one transaction.",
+    "keywords": [
+      "deadlock",
+      "blocking",
+      "transaction",
+      "lock",
+      "cycle"
+    ]
+  },
+  {
+    "id": 54,
+    "topic": "api",
+    "difficulty": "easy",
+    "question": "What is the difference between HTTP and HTTPS?",
+    "answer": "HTTP transfers web requests and responses without transport encryption by itself. HTTPS uses HTTP over TLS to provide encryption, server authentication, and message integrity.",
+    "keywords": [
+      "HTTP",
+      "HTTPS",
+      "TLS",
+      "encryption",
+      "authentication"
+    ]
+  },
+  {
+    "id": 55,
+    "topic": "api",
+    "difficulty": "easy",
+    "question": "What is an endpoint in an API?",
+    "answer": "An endpoint is a specific URL or URI through which a client accesses an API resource or operation. It is commonly used with an HTTP method such as GET or POST.",
+    "keywords": [
+      "endpoint",
+      "URL",
+      "URI",
+      "resource",
+      "HTTP method"
+    ]
+  },
+  {
+    "id": 56,
+    "topic": "api",
+    "difficulty": "easy",
+    "question": "What is JSON?",
+    "answer": "JSON stands for JavaScript Object Notation. It is a lightweight text format for representing structured data using objects, arrays, strings, numbers, booleans, and null.",
+    "keywords": [
+      "JSON",
+      "object",
+      "array",
+      "data format",
+      "serialization"
+    ]
+  },
+  {
+    "id": 57,
+    "topic": "api",
+    "difficulty": "medium",
+    "question": "What does stateless mean in REST?",
+    "answer": "Stateless means each request contains the information needed to understand and process it. The server does not rely on stored client session context from earlier requests to interpret the current request.",
+    "keywords": [
+      "stateless",
+      "request",
+      "session",
+      "REST"
+    ]
+  },
+  {
+    "id": 58,
+    "topic": "api",
+    "difficulty": "medium",
+    "question": "What is the difference between 401 and 403 status codes?",
+    "answer": "401 Unauthorized indicates that valid authentication credentials are missing or not accepted. 403 Forbidden means the server understood the request but refuses to authorize it.",
+    "keywords": [
+      "401",
+      "403",
+      "authentication",
+      "authorization",
+      "forbidden"
+    ]
+  },
+  {
+    "id": 59,
+    "topic": "api",
+    "difficulty": "medium",
+    "question": "What is API versioning and why is it used?",
+    "answer": "API versioning identifies different revisions of an API so changes can be introduced while existing clients continue using a supported version. Versions may be expressed in URL paths, headers, or other conventions.",
+    "keywords": [
+      "API versioning",
+      "backward compatibility",
+      "URL",
+      "header"
+    ]
+  },
+  {
+    "id": 60,
+    "topic": "api",
+    "difficulty": "medium",
+    "question": "What is pagination in an API?",
+    "answer": "Pagination divides a large result set into smaller pages so clients can retrieve data in manageable portions. Common approaches include offset-limit pagination and cursor-based pagination.",
+    "keywords": [
+      "pagination",
+      "limit",
+      "offset",
+      "cursor",
+      "response"
+    ]
+  },
+  {
+    "id": 61,
+    "topic": "api",
+    "difficulty": "medium",
+    "question": "What is CORS?",
+    "answer": "Cross-Origin Resource Sharing is a browser security mechanism that uses HTTP headers to control whether a web page from one origin can access resources from another origin.",
+    "keywords": [
+      "CORS",
+      "origin",
+      "browser",
+      "HTTP headers",
+      "security"
+    ]
+  },
+  {
+    "id": 62,
+    "topic": "api",
+    "difficulty": "medium",
+    "question": "What is the difference between PUT and PATCH?",
+    "answer": "PUT generally replaces the target resource representation, while PATCH applies a partial modification. The exact behavior should be defined by the API contract.",
+    "keywords": [
+      "PUT",
+      "PATCH",
+      "replace",
+      "partial update",
+      "resource"
+    ]
+  },
+  {
+    "id": 63,
+    "topic": "api",
+    "difficulty": "hard",
+    "question": "What is idempotency in REST APIs?",
+    "answer": "An operation is idempotent when making the same request multiple times has the same intended effect as making it once. GET, PUT, and DELETE are defined as idempotent methods; POST is not inherently idempotent.",
+    "keywords": [
+      "idempotency",
+      "GET",
+      "PUT",
+      "DELETE",
+      "POST",
+      "request"
+    ]
+  },
+  {
+    "id": 64,
+    "topic": "api",
+    "difficulty": "hard",
+    "question": "What is rate limiting in an API?",
+    "answer": "Rate limiting restricts how many requests a client can make within a time period. It helps protect service availability and manage resources. APIs may return 429 Too Many Requests when a limit is exceeded.",
+    "keywords": [
+      "rate limiting",
+      "429",
+      "requests",
+      "availability",
+      "quota"
+    ]
+  },
+  {
+    "id": 65,
+    "topic": "api",
+    "difficulty": "hard",
+    "question": "What is the difference between authentication and authorization?",
+    "answer": "Authentication verifies who a user or client is. Authorization determines what an authenticated identity is allowed to access or do.",
+    "keywords": [
+      "authentication",
+      "authorization",
+      "identity",
+      "permissions"
+    ]
+  },
+  {
+    "id": 66,
+    "topic": "api",
+    "difficulty": "hard",
+    "question": "What is an API gateway?",
+    "answer": "An API gateway is an entry point that routes client requests to backend services. It may also handle cross-cutting concerns such as authentication, rate limiting, logging, and request transformation.",
+    "keywords": [
+      "API gateway",
+      "routing",
+      "microservices",
+      "authentication",
+      "rate limiting"
+    ]
+  },
+  {
+    "id": 67,
+    "topic": "api",
+    "difficulty": "hard",
+    "question": "What is the purpose of a webhook?",
+    "answer": "A webhook allows one system to notify another system about an event by sending an HTTP request to a configured URL. It is commonly used for event-driven integrations.",
+    "keywords": [
+      "webhook",
+      "event",
+      "HTTP request",
+      "callback",
+      "integration"
+    ]
+  },
+  {
+    "id": 68,
+    "topic": "api",
+    "difficulty": "hard",
+    "question": "How should an API handle errors consistently?",
+    "answer": "An API should use appropriate HTTP status codes and a predictable response structure containing useful error information. It should avoid exposing secrets or internal stack traces and should validate client input.",
+    "keywords": [
+      "error handling",
+      "status code",
+      "validation",
+      "response structure",
+      "security"
+    ]
+  },
+  {
+    "id": 69,
+    "topic": "java",
+    "difficulty": "easy",
+    "question": "What is the difference between a class and an object in Java?",
+    "answer": "A class is a blueprint that defines fields and methods. An object is an instance of a class with its own state and access to the class behavior.",
+    "keywords": [
+      "class",
+      "object",
+      "instance",
+      "fields",
+      "methods"
+    ]
+  },
+  {
+    "id": 70,
+    "topic": "java",
+    "difficulty": "easy",
+    "question": "What is a constructor in Java?",
+    "answer": "A constructor is a special class member used to initialize a new object. It has the same name as the class and has no return type. Java provides a default constructor only when no constructor is declared.",
+    "keywords": [
+      "constructor",
+      "initialization",
+      "object",
+      "default constructor"
+    ]
+  },
+  {
+    "id": 71,
+    "topic": "java",
+    "difficulty": "easy",
+    "question": "What is the difference between int and Integer?",
+    "answer": "int is a primitive type that stores an integer value. Integer is the wrapper class for int; it is an object, can be null, and provides utility methods. Java supports boxing and unboxing between them.",
+    "keywords": [
+      "int",
+      "Integer",
+      "primitive",
+      "wrapper class",
+      "boxing",
+      "unboxing"
+    ]
+  },
+  {
+    "id": 72,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "What is method overloading?",
+    "answer": "Method overloading means defining multiple methods in the same class with the same name but different parameter lists. The compiler selects the applicable method at compile time.",
+    "keywords": [
+      "method overloading",
+      "parameters",
+      "compile time",
+      "polymorphism"
+    ]
+  },
+  {
+    "id": 73,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "What is method overriding?",
+    "answer": "Method overriding occurs when a subclass provides its own implementation of an inherited instance method with a compatible signature. It enables runtime polymorphism.",
+    "keywords": [
+      "method overriding",
+      "subclass",
+      "inheritance",
+      "runtime polymorphism"
+    ]
+  },
+  {
+    "id": 74,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "What is the difference between == and equals() in Java?",
+    "answer": "For primitives, == compares values. For object references, == checks whether they refer to the same object. equals() checks logical equality when a class overrides it; otherwise Object's implementation compares identity.",
+    "keywords": [
+      "==",
+      "equals",
+      "reference",
+      "object",
+      "equality"
+    ]
+  },
+  {
+    "id": 75,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "Why is String immutable in Java?",
+    "answer": "A String object cannot be changed after creation. Immutability supports safe sharing, string pooling, stable hash codes, and security. Operations that appear to modify a String create another String.",
+    "keywords": [
+      "String",
+      "immutable",
+      "string pool",
+      "hash code"
+    ]
+  },
+  {
+    "id": 76,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "What is the difference between ArrayList and LinkedList?",
+    "answer": "ArrayList uses a resizable array and provides fast indexed access. LinkedList uses linked nodes and can insert or remove efficiently when the position is already reached, but indexed access is slower. Actual performance depends on usage.",
+    "keywords": [
+      "ArrayList",
+      "LinkedList",
+      "array",
+      "nodes",
+      "indexed access"
+    ]
+  },
+  {
+    "id": 77,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "What is the purpose of the static keyword?",
+    "answer": "A static member belongs to the class rather than a particular object. Static fields are shared by instances, and static methods can be called using the class name without creating an object.",
+    "keywords": [
+      "static",
+      "class member",
+      "object",
+      "shared field",
+      "method"
+    ]
+  },
+  {
+    "id": 78,
+    "topic": "java",
+    "difficulty": "medium",
+    "question": "What is the difference between final, finally, and finalize?",
+    "answer": "final is a keyword used to restrict reassignment, overriding, or inheritance depending on context. finally is a block used in exception handling for cleanup. finalize was a garbage-collection-related method that is deprecated and should not be relied upon.",
+    "keywords": [
+      "final",
+      "finally",
+      "finalize",
+      "exception",
+      "garbage collection"
+    ]
+  },
+  {
+    "id": 79,
+    "topic": "java",
+    "difficulty": "hard",
+    "question": "What is the Java Collections Framework?",
+    "answer": "The Java Collections Framework is a set of interfaces and classes for storing and manipulating groups of objects. It includes interfaces such as List, Set, Queue, and Map, with implementations such as ArrayList and HashSet.",
+    "keywords": [
+      "collections framework",
+      "List",
+      "Set",
+      "Queue",
+      "Map"
+    ]
+  },
+  {
+    "id": 80,
+    "topic": "java",
+    "difficulty": "hard",
+    "question": "What is the difference between HashMap and Hashtable?",
+    "answer": "HashMap is not synchronized and permits one null key and null values. Hashtable is synchronized and does not permit null keys or values. For concurrent access, modern code commonly uses ConcurrentHashMap instead of Hashtable.",
+    "keywords": [
+      "HashMap",
+      "Hashtable",
+      "synchronized",
+      "null",
+      "ConcurrentHashMap"
+    ]
+  },
+  {
+    "id": 81,
+    "topic": "java",
+    "difficulty": "hard",
+    "question": "What is multithreading in Java?",
+    "answer": "Multithreading allows multiple threads to execute within one process. Java supports creating tasks with Thread or Runnable and coordinating them with synchronization and concurrency utilities.",
+    "keywords": [
+      "multithreading",
+      "Thread",
+      "Runnable",
+      "synchronization",
+      "concurrency"
+    ]
+  },
+  {
+    "id": 82,
+    "topic": "java",
+    "difficulty": "hard",
+    "question": "What is the difference between checked and unchecked exceptions?",
+    "answer": "Checked exceptions are checked by the compiler and must be caught or declared, except where the rules do not require it. Unchecked exceptions are RuntimeException subclasses and do not have that compile-time requirement.",
+    "keywords": [
+      "checked exception",
+      "unchecked exception",
+      "RuntimeException",
+      "compiler"
+    ]
+  },
+  {
+    "id": 83,
+    "topic": "java",
+    "difficulty": "hard",
+    "question": "What is garbage collection in Java?",
+    "answer": "Garbage collection automatically reclaims heap memory occupied by objects that are no longer reachable. The JVM manages when and how collection occurs; calling System.gc() is only a request and does not guarantee immediate collection.",
+    "keywords": [
+      "garbage collection",
+      "heap",
+      "reachable",
+      "JVM",
+      "System.gc"
+    ]
+  },
+  {
+    "id": 84,
+    "topic": "os",
+    "difficulty": "easy",
+    "question": "What is the difference between hardware and software?",
+    "answer": "Hardware refers to the physical components of a computer, such as the CPU, memory, and storage. Software is the set of programs and instructions that tell the hardware what to do.",
+    "keywords": [
+      "hardware",
+      "software",
+      "CPU",
+      "memory",
+      "program"
+    ]
+  },
+  {
+    "id": 85,
+    "topic": "os",
+    "difficulty": "easy",
+    "question": "What is a kernel in an operating system?",
+    "answer": "The kernel is the core part of an operating system. It manages system resources and provides essential services such as process scheduling, memory management, and device interaction.",
+    "keywords": [
+      "kernel",
+      "operating system",
+      "process",
+      "memory",
+      "device"
+    ]
+  },
+  {
+    "id": 86,
+    "topic": "os",
+    "difficulty": "easy",
+    "question": "What is multitasking?",
+    "answer": "Multitasking is the operating system's ability to manage multiple tasks so they make progress during overlapping periods. It commonly uses scheduling and context switching.",
+    "keywords": [
+      "multitasking",
+      "scheduling",
+      "context switching",
+      "tasks"
+    ]
+  },
+  {
+    "id": 87,
+    "topic": "os",
+    "difficulty": "easy",
+    "question": "What is virtual memory?",
+    "answer": "Virtual memory gives each process a virtual address space and allows the operating system to use secondary storage to support memory management. It provides isolation and can let programs use an address space larger than available physical RAM.",
+    "keywords": [
+      "virtual memory",
+      "address space",
+      "RAM",
+      "isolation",
+      "storage"
+    ]
+  },
+  {
+    "id": 88,
+    "topic": "os",
+    "difficulty": "medium",
+    "question": "What is context switching?",
+    "answer": "Context switching is saving the state of one process or thread and restoring the state of another so the CPU can switch execution. It enables multitasking but introduces overhead.",
+    "keywords": [
+      "context switching",
+      "process",
+      "thread",
+      "CPU",
+      "overhead"
+    ]
+  },
+  {
+    "id": 89,
+    "topic": "os",
+    "difficulty": "medium",
+    "question": "What is CPU scheduling?",
+    "answer": "CPU scheduling selects which ready process or thread should run next. Common algorithms include First Come First Served, Shortest Job First, Priority Scheduling, and Round Robin.",
+    "keywords": [
+      "CPU scheduling",
+      "FCFS",
+      "SJF",
+      "priority",
+      "Round Robin"
+    ]
+  },
+  {
+    "id": 90,
+    "topic": "os",
+    "difficulty": "medium",
+    "question": "What is the difference between paging and segmentation?",
+    "answer": "Paging divides virtual memory into fixed-size pages and physical memory into frames. Segmentation divides a program into logical variable-sized units such as code, data, and stack segments.",
+    "keywords": [
+      "paging",
+      "segmentation",
+      "page",
+      "frame",
+      "memory"
+    ]
+  },
+  {
+    "id": 91,
+    "topic": "os",
+    "difficulty": "medium",
+    "question": "What is a semaphore?",
+    "answer": "A semaphore is a synchronization mechanism that controls access to shared resources using operations commonly called wait and signal. Counting semaphores allow a limited number of concurrent accesses; binary semaphores have two states.",
+    "keywords": [
+      "semaphore",
+      "synchronization",
+      "wait",
+      "signal",
+      "shared resource"
+    ]
+  },
+  {
+    "id": 92,
+    "topic": "os",
+    "difficulty": "medium",
+    "question": "What is a race condition?",
+    "answer": "A race condition occurs when the result of a program depends on the timing or interleaving of concurrent operations on shared state. Locks and other synchronization techniques can prevent unsafe access.",
+    "keywords": [
+      "race condition",
+      "concurrency",
+      "shared state",
+      "synchronization",
+      "lock"
+    ]
+  },
+  {
+    "id": 93,
+    "topic": "os",
+    "difficulty": "medium",
+    "question": "What is the difference between internal and external fragmentation?",
+    "answer": "Internal fragmentation is wasted space inside an allocated memory block because the block is larger than requested. External fragmentation is free memory split into scattered small holes that may not satisfy a large contiguous allocation.",
+    "keywords": [
+      "internal fragmentation",
+      "external fragmentation",
+      "memory",
+      "allocation"
+    ]
+  },
+  {
+    "id": 94,
+    "topic": "os",
+    "difficulty": "hard",
+    "question": "What is thrashing in an operating system?",
+    "answer": "Thrashing occurs when a system spends excessive time handling page faults and swapping pages rather than executing useful work. It often happens when processes have insufficient memory frames.",
+    "keywords": [
+      "thrashing",
+      "page fault",
+      "paging",
+      "frames",
+      "memory"
+    ]
+  },
+  {
+    "id": 95,
+    "topic": "os",
+    "difficulty": "hard",
+    "question": "What is the difference between user mode and kernel mode?",
+    "answer": "User mode restricts application access to privileged instructions and hardware resources. Kernel mode allows the operating system kernel to execute privileged operations. A system call provides a controlled transition between them.",
+    "keywords": [
+      "user mode",
+      "kernel mode",
+      "privileged instruction",
+      "system call"
+    ]
+  },
+  {
+    "id": 96,
+    "topic": "os",
+    "difficulty": "hard",
+    "question": "What is a system call?",
+    "answer": "A system call is the interface through which a user program requests a service from the operating system kernel, such as file access, process creation, or communication.",
+    "keywords": [
+      "system call",
+      "kernel",
+      "user program",
+      "file",
+      "process"
+    ]
+  },
+  {
+    "id": 97,
+    "topic": "os",
+    "difficulty": "hard",
+    "question": "What is the producer-consumer problem?",
+    "answer": "The producer-consumer problem is a synchronization problem in which producers add items to a shared buffer and consumers remove them. Synchronization is needed to prevent race conditions and coordinate empty or full buffer states.",
+    "keywords": [
+      "producer consumer",
+      "buffer",
+      "synchronization",
+      "semaphore",
+      "race condition"
+    ]
+  },
+  {
+    "id": 98,
+    "topic": "os",
+    "difficulty": "hard",
+    "question": "What is the difference between a monolithic kernel and a microkernel?",
+    "answer": "A monolithic kernel runs many operating-system services in kernel space. A microkernel keeps the kernel smaller and moves more services to user space. The designs differ in modularity, communication overhead, and fault isolation.",
+    "keywords": [
+      "monolithic kernel",
+      "microkernel",
+      "kernel space",
+      "user space",
+      "modularity"
+    ]
+  },
+  {
+    "id": 99,
+    "topic": "os",
+    "difficulty": "hard",
+    "question": "What is starvation in CPU scheduling?",
+    "answer": "Starvation occurs when a process waits indefinitely because other processes keep receiving the resources or CPU time it needs. Aging can reduce starvation by gradually increasing the priority of waiting processes.",
+    "keywords": [
+      "starvation",
+      "CPU scheduling",
+      "priority",
+      "aging",
+      "process"
+    ]
+  },
+  {
+    "id": 100,
+    "topic": "os",
+    "difficulty": "hard",
+    "question": "What is the difference between a logical address and a physical address?",
+    "answer": "A logical or virtual address is generated by the CPU for a process. A physical address identifies a location in main memory. The memory management unit translates virtual addresses into physical addresses.",
+    "keywords": [
+      "logical address",
+      "virtual address",
+      "physical address",
+      "MMU",
+      "translation"
+    ]
   }
 ]

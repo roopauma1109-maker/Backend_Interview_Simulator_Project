@@ -1,0 +1,410 @@
+
+[
+  {
+    "id": 1,
+    "topic": "java",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "A company stores employee IDs in a collection. How would you prevent duplicate IDs?",
+    "scenario": "An employee management system receives multiple employee records with the same ID.",
+    "answer": "Use HashSet to store unique employee IDs. HashSet prevents duplicates using hashCode() and equals().",
+    "answer_points": ["HashSet", "Unique elements", "hashCode()", "equals()"],
+    "follow_up_questions": [
+      "How does HashSet identify duplicate elements?",
+      "Why should equals() and hashCode() be overridden together?"
+    ],
+    "keywords": ["HashSet", "duplicates", "hashCode", "equals"],
+    "estimated_time": 3
+  },
+  {
+    "id": 2,
+    "topic": "java",
+    "difficulty": "intermediate",
+    "question_type": "output_prediction",
+    "question": "What is the output of this Java code?",
+    "scenario": "int a = 10; int b = 20; System.out.println(a + b + \"Java\"); System.out.println(\"Java\" + a + b);",
+    "answer": "First line: 30Java. Second line: Java1020. Java evaluates expressions from left to right. Numeric addition happens before string concatenation when both operands are numbers.",
+    "answer_points": ["Left-to-right evaluation", "Numeric addition", "String concatenation"],
+    "follow_up_questions": [
+      "What happens if the order of operands changes?",
+      "What is the difference between + for numbers and strings?"
+    ],
+    "keywords": ["output", "string concatenation", "operator"],
+    "estimated_time": 2
+  },
+  {
+    "id": 3,
+    "topic": "java",
+    "difficulty": "intermediate",
+    "question_type": "debugging",
+    "question": "Identify and correct the error in this code.",
+    "scenario": "int[] numbers = {10, 20, 30}; for (int i = 0; i <= numbers.length; i++) { System.out.println(numbers[i]); }",
+    "answer": "Change i <= numbers.length to i < numbers.length. Array indexes range from 0 to length - 1. The original code causes ArrayIndexOutOfBoundsException.",
+    "answer_points": ["ArrayIndexOutOfBoundsException", "Array index starts at zero", "Use i < numbers.length"],
+    "follow_up_questions": [
+      "What is the last valid index of an array?",
+      "How can an enhanced for loop avoid this issue?"
+    ],
+    "keywords": ["array", "debugging", "loop", "exception"],
+    "estimated_time": 3
+  },
+  {
+    "id": 4,
+    "topic": "java",
+    "difficulty": "intermediate",
+    "question_type": "concept_based",
+    "question": "Why is String immutable in Java, and what happens when we modify a String?",
+    "scenario": "String name = \"Java\"; name.concat(\" Programming\"); System.out.println(name);",
+    "answer": "The output is Java because String is immutable. concat() creates a new String, but the returned object is not assigned to name.",
+    "answer_points": ["String is immutable", "concat() creates a new object", "Original reference remains unchanged", "Assign the result to retain the modification"],
+    "follow_up_questions": [
+      "How does StringBuilder differ from String?",
+      "When should StringBuffer be used?"
+    ],
+    "keywords": ["String", "immutability", "StringBuilder", "StringBuffer"],
+    "estimated_time": 3
+  },
+  {
+    "id": 5,
+    "topic": "java",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "How would you handle multiple threads accessing the same bank account balance?",
+    "scenario": "Two users attempt to withdraw money from the same account simultaneously.",
+    "answer": "Use synchronization or suitable concurrency utilities to protect the shared balance update. This prevents race conditions and ensures that the balance is updated safely.",
+    "answer_points": ["Shared resource", "Race condition", "synchronized", "Thread safety", "Atomic update"],
+    "follow_up_questions": [
+      "What is a race condition?",
+      "What is the difference between synchronized and AtomicInteger?"
+    ],
+    "keywords": ["multithreading", "synchronization", "race condition", "thread safety"],
+    "estimated_time": 4
+  },
+  {
+    "id": 6,
+    "topic": "python",
+    "difficulty": "intermediate",
+    "question_type": "output_prediction",
+    "question": "Predict the output of this Python code.",
+    "scenario": "numbers = [1, 2, 3]; result = [x * 2 for x in numbers if x > 1]; print(result)",
+    "answer": "[4, 6]. List comprehension filters values greater than 1 and multiplies each selected value by 2.",
+    "answer_points": ["List comprehension", "Conditional filtering", "Expression evaluation"],
+    "follow_up_questions": [
+      "How can you create a dictionary comprehension?",
+      "What is the difference between a list comprehension and a generator expression?"
+    ],
+    "keywords": ["list comprehension", "filtering", "generator"],
+    "estimated_time": 2
+  },
+  {
+    "id": 7,
+    "topic": "python",
+    "difficulty": "intermediate",
+    "question_type": "debugging",
+    "question": "Identify the problem in this Python code.",
+    "scenario": "items = [10, 20, 30]; for item in items: items.remove(item); print(items)",
+    "answer": "Modifying a list while iterating over it can cause elements to be skipped. Iterate over a copy or use a list comprehension to create a filtered list.",
+    "answer_points": ["Modifying collection during iteration", "Skipped elements", "Iterate over a copy", "List comprehension"],
+    "follow_up_questions": [
+      "How can you safely remove all occurrences of a value?",
+      "What does list slicing items[:] do?"
+    ],
+    "keywords": ["list", "iteration", "debugging", "list comprehension"],
+    "estimated_time": 3
+  },
+  {
+    "id": 8,
+    "topic": "python",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "How would you process a very large file without loading the entire file into memory?",
+    "scenario": "A log file contains several gigabytes of records, and you need to count error lines.",
+    "answer": "Open the file using a context manager and iterate over it line by line. This avoids loading the entire file into memory at once.",
+    "answer_points": ["with statement", "Context manager", "Line-by-line processing", "Memory efficiency"],
+    "follow_up_questions": [
+      "What is a generator?",
+      "Why is yield useful for large datasets?"
+    ],
+    "keywords": ["file handling", "generator", "memory", "with statement"],
+    "estimated_time": 4
+  },
+  {
+    "id": 9,
+    "topic": "python",
+    "difficulty": "intermediate",
+    "question_type": "concept_based",
+    "question": "What is the difference between shallow copy and deep copy?",
+    "scenario": "original = [[1, 2], [3, 4]]. You create a shallow copy and modify original[0][0].",
+    "answer": "A shallow copy creates a new outer list but shares references to nested lists. Therefore, modifying a nested list through the original can also affect the shallow copy. deepcopy() recursively copies nested objects.",
+    "answer_points": ["copy.copy()", "copy.deepcopy()", "Nested object references", "Shared mutable objects"],
+    "follow_up_questions": [
+      "Which module provides deepcopy()?",
+      "Why can shallow copies cause unexpected changes?"
+    ],
+    "keywords": ["shallow copy", "deep copy", "nested objects", "copy module"],
+    "estimated_time": 3
+  },
+  {
+    "id": 10,
+    "topic": "python",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "How would you handle different types of errors when calling an external service?",
+    "scenario": "A Python application calls an external service that may time out or return invalid data.",
+    "answer": "Use try-except blocks to handle specific exceptions, configure timeouts, validate returned data, and use logging for diagnosis. Avoid catching every exception without handling it appropriately.",
+    "answer_points": ["try-except", "Specific exceptions", "Timeout handling", "Input validation", "Logging"],
+    "follow_up_questions": [
+      "What is the purpose of finally?",
+      "What is the difference between raise and assert?"
+    ],
+    "keywords": ["exception handling", "timeout", "validation", "logging"],
+    "estimated_time": 4
+  }
+
+,
+  {
+    "id": 11,
+    "topic": "dbms",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "How would you identify duplicate email addresses in a Users table?",
+    "scenario": "A Users table contains user_id, name, and email columns. Some users have registered with the same email address.",
+    "answer": "Use GROUP BY on the email column and HAVING COUNT(*) > 1 to identify duplicate email addresses.",
+    "answer_points": ["GROUP BY", "HAVING", "COUNT(*)", "Duplicate identification"],
+    "follow_up_questions": [
+      "What is the difference between WHERE and HAVING?",
+      "How can you prevent duplicate emails during insertion?"
+    ],
+    "keywords": ["SQL", "GROUP BY", "HAVING", "duplicates"],
+    "estimated_time": 3
+  },
+  {
+    "id": 12,
+    "topic": "dbms",
+    "difficulty": "intermediate",
+    "question_type": "concept_based",
+    "question": "Explain database normalization and why it is important.",
+    "scenario": "An application stores customer details and order details repeatedly in a single table, causing duplicate data.",
+    "answer": "Normalization organizes data into related tables to reduce redundancy and improve data integrity. Common normal forms include 1NF, 2NF, and 3NF.",
+    "answer_points": ["Reduce redundancy", "Improve data integrity", "1NF", "2NF", "3NF"],
+    "follow_up_questions": [
+      "What is the difference between 2NF and 3NF?",
+      "What is denormalization?"
+    ],
+    "keywords": ["normalization", "1NF", "2NF", "3NF", "redundancy"],
+    "estimated_time": 4
+  },
+  {
+    "id": 13,
+    "topic": "dbms",
+    "difficulty": "intermediate",
+    "question_type": "output_prediction",
+    "question": "What records will this SQL query return?",
+    "scenario": "SELECT department_id, COUNT(*) FROM Employees GROUP BY department_id HAVING COUNT(*) > 5;",
+    "answer": "The query returns department IDs that have more than five employees, along with the employee count for each department.",
+    "answer_points": ["GROUP BY groups rows", "COUNT(*) counts records", "HAVING filters grouped results"],
+    "follow_up_questions": [
+      "Can WHERE be used instead of HAVING for aggregate conditions?",
+      "What happens if GROUP BY is removed?"
+    ],
+    "keywords": ["GROUP BY", "COUNT", "HAVING", "aggregate functions"],
+    "estimated_time": 3
+  },
+  {
+    "id": 14,
+    "topic": "dbms",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "How would you retrieve employees who do not belong to any department?",
+    "scenario": "There are Employees and Departments tables. Employees.department_id can be NULL or may not match an existing department.",
+    "answer": "Use a LEFT JOIN between Employees and Departments, then filter rows where the department key from the Departments table is NULL. This identifies employees without a matching department.",
+    "answer_points": ["LEFT JOIN", "Matching records", "NULL checking", "Referential integrity"],
+    "follow_up_questions": [
+      "What is the difference between INNER JOIN and LEFT JOIN?",
+      "Can a foreign key contain NULL values?"
+    ],
+    "keywords": ["LEFT JOIN", "NULL", "foreign key", "SQL joins"],
+    "estimated_time": 4
+  },
+  {
+    "id": 15,
+    "topic": "dbms",
+    "difficulty": "intermediate",
+    "question_type": "concept_based",
+    "question": "Explain ACID properties in database transactions.",
+    "scenario": "A banking application transfers money from one account to another. The debit and credit operations must both succeed or both fail.",
+    "answer": "ACID stands for Atomicity, Consistency, Isolation, and Durability. These properties ensure reliable transaction processing. Atomicity ensures both transfer operations succeed together or are rolled back.",
+    "answer_points": ["Atomicity", "Consistency", "Isolation", "Durability", "Transaction reliability"],
+    "follow_up_questions": [
+      "What is a dirty read?",
+      "What is the difference between COMMIT and ROLLBACK?"
+    ],
+    "keywords": ["ACID", "transactions", "COMMIT", "ROLLBACK", "isolation"],
+    "estimated_time": 4
+  }
+  
+,
+  {
+    "id": 16,
+    "topic": "api",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "How would you implement authentication and authorization in a REST API?",
+    "scenario": "An application has normal users and administrators. Each role should access only permitted endpoints.",
+    "answer": "Authentication verifies the user's identity, while authorization checks their permissions. JWT or session-based authentication can identify users, and role-based access control can restrict endpoints.",
+    "answer_points": ["Authentication", "Authorization", "JWT", "Role-based access control", "Endpoint protection"],
+    "follow_up_questions": [
+      "What is the difference between access tokens and refresh tokens?",
+      "Why should passwords never be stored as plain text?"
+    ],
+    "keywords": ["REST API", "JWT", "authentication", "authorization", "RBAC"],
+    "estimated_time": 4
+  },
+  {
+    "id": 17,
+    "topic": "api",
+    "difficulty": "intermediate",
+    "question_type": "concept_based",
+    "question": "Explain the difference between PUT and PATCH HTTP methods.",
+    "scenario": "A user updates their profile by changing only their phone number.",
+    "answer": "PUT generally replaces the complete resource representation, while PATCH applies a partial update to selected fields. PATCH is suitable when only the phone number needs to be changed.",
+    "answer_points": ["PUT replaces resource representation", "PATCH performs partial updates", "HTTP methods", "Resource updates"],
+    "follow_up_questions": [
+      "What does idempotent mean?",
+      "Is PUT idempotent?"
+    ],
+    "keywords": ["PUT", "PATCH", "HTTP methods", "idempotency"],
+    "estimated_time": 3
+  },
+  {
+    "id": 18,
+    "topic": "api",
+    "difficulty": "intermediate",
+    "question_type": "debugging",
+    "question": "An API returns HTTP 500 when a client sends invalid input. How would you investigate and fix it?",
+    "scenario": "A registration endpoint crashes when the email field is missing or has an invalid format.",
+    "answer": "Validate request data before processing, return an appropriate 4xx response for invalid input, handle expected exceptions, and log unexpected server errors. A 500 response should indicate an unexpected server-side failure.",
+    "answer_points": ["Request validation", "HTTP 400 or 422", "Exception handling", "Logging", "HTTP 500"],
+    "follow_up_questions": [
+      "What is the difference between HTTP 400 and HTTP 500?",
+      "Why should internal exception details not be exposed to clients?"
+    ],
+    "keywords": ["HTTP status codes", "validation", "exception handling", "API debugging"],
+    "estimated_time": 4
+  },
+  {
+    "id": 19,
+    "topic": "api",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "How would you prevent an API from processing the same payment request twice?",
+    "scenario": "A customer clicks the payment button multiple times because the application is responding slowly.",
+    "answer": "Use an idempotency key for each payment request. Store the key and processing result, and return the existing result when the same key is received again. Also use appropriate database transaction handling.",
+    "answer_points": ["Idempotency key", "Duplicate request detection", "Stored response", "Database transaction"],
+    "follow_up_questions": [
+      "What does idempotency mean in REST APIs?",
+      "Why is payment processing sensitive to duplicate requests?"
+    ],
+    "keywords": ["idempotency", "payment API", "duplicate requests", "transactions"],
+    "estimated_time": 4
+  },
+  {
+    "id": 20,
+    "topic": "api",
+    "difficulty": "intermediate",
+    "question_type": "concept_based",
+    "question": "What is API rate limiting, and why is it required?",
+    "scenario": "A public API receives thousands of requests from a single client within a short period.",
+    "answer": "Rate limiting restricts the number of requests a client can make within a specified time window. It protects server resources, reduces abuse, and helps maintain service availability. Common strategies include fixed window, sliding window, and token bucket.",
+    "answer_points": ["Request limits", "Time window", "Server protection", "Fixed window", "Sliding window", "Token bucket"],
+    "follow_up_questions": [
+      "What is HTTP 429?",
+      "What is the difference between fixed window and token bucket algorithms?"
+    ],
+    "keywords": ["rate limiting", "HTTP 429", "token bucket", "API security"],
+    "estimated_time": 4
+  }
+  
+,
+  {
+    "id": 21,
+    "topic": "os",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "What is a deadlock, and how can an operating system prevent it?",
+    "scenario": "Process P1 holds Resource A and waits for Resource B, while Process P2 holds Resource B and waits for Resource A.",
+    "answer": "A deadlock occurs when processes wait indefinitely for resources held by one another. Deadlock prevention avoids at least one of the four necessary conditions: mutual exclusion, hold and wait, no preemption, and circular wait.",
+    "answer_points": ["Deadlock", "Mutual exclusion", "Hold and wait", "No preemption", "Circular wait"],
+    "follow_up_questions": [
+      "What are the four necessary conditions for deadlock?",
+      "What is the difference between deadlock prevention and avoidance?"
+    ],
+    "keywords": ["deadlock", "operating system", "resource allocation", "prevention"],
+    "estimated_time": 4
+  },
+  {
+    "id": 22,
+    "topic": "os",
+    "difficulty": "intermediate",
+    "question_type": "concept_based",
+    "question": "Explain the difference between a process and a thread.",
+    "scenario": "A browser runs multiple tabs and performs background tasks simultaneously.",
+    "answer": "A process is an independent program in execution with its own address space. A thread is a unit of execution within a process. Threads of the same process share memory and resources.",
+    "answer_points": ["Process has its own address space", "Threads share process resources", "Thread is a unit of execution", "Context switching"],
+    "follow_up_questions": [
+      "What is multithreading?",
+      "What happens if one thread crashes?"
+    ],
+    "keywords": ["process", "thread", "multithreading", "memory"],
+    "estimated_time": 3
+  },
+  {
+    "id": 23,
+    "topic": "os",
+    "difficulty": "intermediate",
+    "question_type": "output_prediction",
+    "question": "Calculate the average waiting time using FCFS scheduling.",
+    "scenario": "Three processes arrive at time 0. Their burst times are P1 = 5 ms, P2 = 3 ms, and P3 = 2 ms. They execute in the given order using First Come First Served scheduling.",
+    "answer": "P1 waiting time = 0 ms. P2 waiting time = 5 ms. P3 waiting time = 8 ms. Average waiting time = (0 + 5 + 8) / 3 = 4.33 ms.",
+    "answer_points": ["FCFS scheduling", "Waiting time calculation", "Total waiting time = 13 ms", "Average waiting time = 4.33 ms"],
+    "follow_up_questions": [
+      "What is turnaround time?",
+      "What is the convoy effect in FCFS scheduling?"
+    ],
+    "keywords": ["FCFS", "CPU scheduling", "waiting time", "turnaround time"],
+    "estimated_time": 4
+  },
+  {
+    "id": 24,
+    "topic": "os",
+    "difficulty": "intermediate",
+    "question_type": "scenario_based",
+    "question": "What is virtual memory, and how does it help run large applications?",
+    "scenario": "A computer has limited RAM but needs to run applications that require more memory.",
+    "answer": "Virtual memory provides each process with a virtual address space. The operating system and hardware use memory management mechanisms to map virtual addresses to physical memory. Pages that are not currently in RAM may be stored on disk and loaded when needed.",
+    "answer_points": ["Virtual address space", "Memory mapping", "Paging", "Disk-backed storage", "Page fault"],
+    "follow_up_questions": [
+      "What is a page fault?",
+      "What is the difference between paging and segmentation?"
+    ],
+    "keywords": ["virtual memory", "paging", "page fault", "memory management"],
+    "estimated_time": 4
+  },
+  {
+    "id": 25,
+    "topic": "os",
+    "difficulty": "intermediate",
+    "question_type": "concept_based",
+    "question": "What is the difference between mutex and semaphore?",
+    "scenario": "Multiple threads need to access a shared file or a limited number of database connections.",
+    "answer": "A mutex provides exclusive access to a shared resource and has ownership semantics. A semaphore maintains a counter and can allow a limited number of threads to access a resource simultaneously.",
+    "answer_points": ["Mutex provides mutual exclusion", "Mutex ownership", "Semaphore uses a counter", "Binary semaphore", "Counting semaphore"],
+    "follow_up_questions": [
+      "What is a binary semaphore?",
+      "Can a semaphore allow multiple threads to access a resource?"
+    ],
+    "keywords": ["mutex", "semaphore", "synchronization", "threads"],
+    "estimated_time": 4
+  }
+]
+
